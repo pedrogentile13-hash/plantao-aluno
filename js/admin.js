@@ -32,6 +32,7 @@ function initAdmin() {
     loadSubscriptions();
     loadResults();
     loadContentLists();
+    loadModulos();
 
     // Inicializar formulários
     initForms();
@@ -546,6 +547,112 @@ function logout() {
 }
 
 // CSS adicional para admin
+// GERENCIAR MÓDULOS
+function loadModulos() {
+    const modulos = DB.getAllModulos();
+    const modulosContainer = document.getElementById('modulosList');
+
+    if (!modulosContainer) return;
+
+    if (modulos.length === 0) {
+        modulosContainer.innerHTML = '<p style="color: var(--text-secondary)">Nenhum módulo criado ainda.</p>';
+        return;
+    }
+
+    let html = '<ul style="list-style: none; padding: 0;">';
+    modulos.forEach(modulo => {
+        html += `
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--light-bg); border-radius: 8px; margin-bottom: 8px;">
+                <div>
+                    <strong>${modulo.titulo}</strong><br>
+                    <small>${getMateriaName(modulo.materia)} - ${modulo.bimestre}º Bimestre</small><br>
+                    <small style="color: var(--text-secondary)">${modulo.descricao}</small>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-small btn-primary" onclick="editModulo(${modulo.id})">✏️ Editar</button>
+                    <button class="btn btn-small btn-danger" onclick="deleteModulo(${modulo.id})">🗑️ Excluir</button>
+                </div>
+            </li>
+        `;
+    });
+    html += '</ul>';
+
+    modulosContainer.innerHTML = html;
+}
+
+function editModulo(moduloId) {
+    const modulos = DB.getAllModulos();
+    const modulo = modulos.find(m => m.id === moduloId);
+
+    if (!modulo) {
+        alert('Módulo não encontrado!');
+        return;
+    }
+
+    const titulo = prompt('Título do Módulo:', modulo.titulo);
+    if (!titulo) return;
+
+    const descricao = prompt('Descrição do Módulo:', modulo.descricao);
+    if (!descricao) return;
+
+    const resumo = prompt('Resumo (Markdown):', modulo.resumo);
+    if (!resumo) return;
+
+    DB.updateModulo(moduloId, {
+        titulo,
+        descricao,
+        resumo
+    });
+
+    alert('Módulo atualizado com sucesso!');
+    loadModulos();
+}
+
+function deleteModulo(moduloId) {
+    if (!confirm('Tem certeza que deseja excluir este módulo?')) return;
+
+    DB.deleteModulo(moduloId);
+    alert('Módulo excluído com sucesso!');
+    loadModulos();
+}
+
+function createModulo() {
+    const materia = prompt('Matéria (matematica, portugues, etc):');
+    if (!materia) return;
+
+    const bimestre = parseInt(prompt('Bimestre (1-4):'));
+    if (!bimestre || bimestre < 1 || bimestre > 4) {
+        alert('Bimestre inválido!');
+        return;
+    }
+
+    const titulo = prompt('Título do Módulo (ex: FATORAÇÃO):');
+    if (!titulo) return;
+
+    const descricao = prompt('Descrição breve:');
+    if (!descricao) return;
+
+    const resumo = prompt('Resumo (Markdown):');
+    if (!resumo) return;
+
+    // Criar simulado vazio
+    const simulado = {
+        questoes: []
+    };
+
+    DB.addModulo({
+        materia,
+        bimestre,
+        titulo,
+        descricao,
+        resumo,
+        simulado
+    });
+
+    alert('Módulo criado! Agora você pode adicionar questões ao simulado.');
+    loadModulos();
+}
+
 const style = document.createElement('style');
 style.textContent = `
     .questao-form-card {
