@@ -7,148 +7,186 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="landing-page">
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="logo">📚 Plantão Aluno</h1>
-                <nav class="nav">
-                    <a href="#sobre" class="nav-link">Sobre</a>
-                    <a href="#planos" class="nav-link">Planos</a>
-                    <a href="#contato" class="nav-link">Contato</a>
-                    <button class="btn btn-primary" onclick="redirectToLogin()">Entrar</button>
+    <header class="landing-header">
+        <div class="container-landing">
+            <div class="header-content-landing">
+                <div class="logo-landing">
+                    <div class="logo-icon">📚</div>
+                    <span class="logo-text">Plantão Aluno</span>
+                </div>
+                <nav class="nav-landing">
+                    <a href="pages/login.html" class="btn-entrar">Entrar</a>
+                    <a href="pages/login.html" class="btn-cadastrar">Cadastrar</a>
                 </nav>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h2 class="hero-title">Aprenda no seu ritmo, conquiste seus objetivos</h2>
-                <p class="hero-subtitle">O Plantão Aluno é a plataforma completa de estudos para alunos do 8º e 9º ano. Acesse resumos, videoaulas e simulados de todas as matérias!</p>
-                <button class="btn btn-large btn-primary" onclick="redirectToLogin()">Começar agora grátis</button>
+    <section class="hero-landing">
+        <div class="container-landing">
+            <div class="promo-badge">
+                ✨ Promoção de Janeiro - Até 30% OFF
+            </div>
+            <h1 class="hero-title-landing">
+                Estude com o <span class="gradient-text">Plantão Aluno</span>
+            </h1>
+            <p class="hero-subtitle-landing">
+                A plataforma completa de estudos para alunos do 8º e 9º ano. Resumos, videoaulas e simulados para você arrasar nas provas!
+            </p>
+            <div class="hero-buttons">
+                <a href="pages/login.html" class="btn-hero btn-hero-primary">Começar Agora →</a>
+                <a href="pages/login.html" class="btn-hero btn-hero-secondary">Já tenho conta</a>
             </div>
         </div>
     </section>
 
-    <!-- Sobre o Projeto -->
-    <section id="sobre" class="section">
-        <div class="container">
-            <h2 class="section-title">O que oferecemos?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📝</div>
+    <!-- Features Section -->
+    <section class="features-landing">
+        <div class="container-landing">
+            <h2 class="section-title-landing">Tudo que você precisa para <span class="highlight-blue">estudar melhor</span></h2>
+            <p class="section-subtitle-landing">Ferramentas completas para potencializar seus estudos e garantir as melhores notas.</p>
+
+            <div class="features-grid-landing">
+                <div class="feature-card-landing">
+                    <div class="feature-icon-landing blue">📖</div>
                     <h3>Resumos Completos</h3>
-                    <p>Resumos didáticos de todas as matérias, organizados por bimestre</p>
+                    <p>Material didático de qualidade para todas as matérias do 8º e 9º ano.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎥</div>
+
+                <div class="feature-card-landing">
+                    <div class="feature-icon-landing purple">🎥</div>
                     <h3>Videoaulas</h3>
-                    <p>Aulas em vídeo explicativas para facilitar seu aprendizado</p>
+                    <p>Aulas em vídeo explicativas para reforçar seu aprendizado.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+
+                <div class="feature-card-landing">
+                    <div class="feature-icon-landing orange">🏆</div>
                     <h3>Simulados</h3>
-                    <p>Teste seus conhecimentos com simulados de diferentes níveis</p>
+                    <p>Teste seus conhecimentos com questões de diferentes níveis de dificuldade.</p>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Acompanhamento</h3>
-                    <p>Veja seu desempenho e evolução através de estatísticas detalhadas</p>
+
+                <div class="feature-card-landing">
+                    <div class="feature-icon-landing pink">👥</div>
+                    <h3>Suporte Personalizado</h3>
+                    <p>Acompanhamento dedicado para ajudar em suas dúvidas.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Planos -->
-    <section id="planos" class="section section-gray">
-        <div class="container">
-            <h2 class="section-title">Escolha seu plano</h2>
-            <p class="section-subtitle">Promoção Janeiro/25 - Preços especiais!</p>
-            <div class="plans-grid">
+    <!-- Plans Section -->
+    <section class="plans-landing">
+        <div class="container-landing">
+            <h2 class="section-title-landing">Escolha seu <span class="highlight-purple">plano ideal</span></h2>
+            <p class="section-subtitle-landing">Planos flexíveis que cabem no seu bolso. Comece grátis ou aproveite nossas ofertas especiais!</p>
+
+            <div class="plans-grid-landing">
                 <!-- Plano Grátis -->
-                <div class="plan-card">
-                    <div class="plan-header">
-                        <h3>Grátis</h3>
-                        <div class="plan-price">
-                            <span class="price">R$ 0</span>
-                            <span class="period">/mês</span>
-                        </div>
+                <div class="plan-card-landing">
+                    <h3 class="plan-name">Grátis</h3>
+                    <div class="plan-price-landing">
+                        <span class="currency">R$</span>
+                        <span class="amount">0,00</span>
                     </div>
-                    <ul class="plan-features">
-                        <li class="feature-item">✅ Acesso limitado aos resumos</li>
-                        <li class="feature-item">✅ 1 simulado por bimestre</li>
-                        <li class="feature-item">❌ Sem videoaulas</li>
-                        <li class="feature-item">❌ Suporte básico</li>
+                    <ul class="plan-features-landing">
+                        <li class="feature-yes">✓ Acesso limitado aos resumos</li>
+                        <li class="feature-no">✗ Acesso às videoaulas</li>
+                        <li class="feature-no">✗ Suporte personalizado</li>
+                        <li class="feature-yes">✓ 1 simulado por bimestre</li>
                     </ul>
-                    <button class="btn btn-outline" onclick="redirectToLogin()">Começar grátis</button>
+                    <a href="pages/login.html" class="btn-plan btn-plan-outline">Começar Grátis</a>
                 </div>
 
                 <!-- Plano Básico -->
-                <div class="plan-card plan-popular">
-                    <div class="plan-badge">Mais popular</div>
-                    <div class="plan-header">
-                        <h3>Básico</h3>
-                        <div class="plan-price">
-                            <span class="price-old">R$ 29,90</span>
-                            <span class="price">R$ 22,90</span>
-                            <span class="period">/mês</span>
+                <div class="plan-card-landing plan-highlight">
+                    <div class="plan-badge-landing">Janeiro25</div>
+                    <h3 class="plan-name">Básico</h3>
+                    <div class="plan-price-landing">
+                        <span class="price-old-landing">R$ 29,90</span>
+                        <div>
+                            <span class="currency">R$</span>
+                            <span class="amount">22,90</span>
                         </div>
-                        <span class="promo-tag">Janeiro/25</span>
+                        <span class="period-landing">/mês</span>
                     </div>
-                    <ul class="plan-features">
-                        <li class="feature-item">✅ Acesso a todos os resumos</li>
-                        <li class="feature-item">✅ 4 simulados por bimestre</li>
-                        <li class="feature-item">✅ Suporte personalizado</li>
-                        <li class="feature-item">❌ Sem videoaulas</li>
+                    <ul class="plan-features-landing">
+                        <li class="feature-yes">✓ Acesso a todos os Resumos</li>
+                        <li class="feature-no">✗ Acesso às videoaulas</li>
+                        <li class="feature-yes">✓ Suporte personalizado</li>
+                        <li class="feature-yes">✓ 4 simulados por bimestre</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="redirectToLogin()">Assinar Básico</button>
+                    <a href="pages/login.html" class="btn-plan btn-plan-gradient-orange">Assinar Básico</a>
                 </div>
 
                 <!-- Plano Premium -->
-                <div class="plan-card plan-premium">
-                    <div class="plan-badge premium-badge">Premium</div>
-                    <div class="plan-header">
-                        <h3>Premium</h3>
-                        <div class="plan-price">
-                            <span class="price-old">R$ 49,90</span>
-                            <span class="price">R$ 34,90</span>
-                            <span class="period">/mês</span>
+                <div class="plan-card-landing plan-premium-landing">
+                    <div class="plan-badge-landing premium">Janeiro25</div>
+                    <div class="popular-tag">Mais Popular</div>
+                    <h3 class="plan-name white">Premium</h3>
+                    <div class="plan-price-landing white">
+                        <span class="price-old-landing white">R$ 49,90</span>
+                        <div>
+                            <span class="currency">R$</span>
+                            <span class="amount">34,90</span>
                         </div>
-                        <span class="promo-tag">Janeiro/25</span>
+                        <span class="period-landing">/mês</span>
                     </div>
-                    <ul class="plan-features">
-                        <li class="feature-item">✅ Tudo do plano Básico</li>
-                        <li class="feature-item">✅ Todas as videoaulas</li>
-                        <li class="feature-item">✅ Todos os simulados</li>
-                        <li class="feature-item">✅ Suporte prioritário</li>
+                    <ul class="plan-features-landing white">
+                        <li class="feature-yes">✓ Tudo do plano Básico</li>
+                        <li class="feature-yes">✓ Todas as videoaulas</li>
+                        <li class="feature-yes">✓ Todos os simulados</li>
+                        <li class="feature-yes">✓ Conteúdo exclusivo</li>
                     </ul>
-                    <button class="btn btn-primary" onclick="redirectToLogin()">Assinar Premium</button>
+                    <a href="pages/login.html" class="btn-plan btn-plan-white">Assinar Premium</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato -->
-    <section id="contato" class="section">
-        <div class="container">
-            <h2 class="section-title">Entre em contato</h2>
-            <p class="section-subtitle">Dúvidas? Estamos aqui para ajudar!</p>
-            <div class="contact-info">
-                <p>📧 Email: contato@plantaoaluno.com.br</p>
-                <p>📱 WhatsApp: (11) 9999-9999</p>
+    <!-- Stats Section -->
+    <section class="stats-landing">
+        <div class="container-landing">
+            <div class="stats-grid-landing">
+                <div class="stat-item-landing">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Matérias Completas</div>
+                </div>
+                <div class="stat-item-landing">
+                    <div class="stat-number">4</div>
+                    <div class="stat-label">Bimestres de Conteúdo</div>
+                </div>
+                <div class="stat-item-landing">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Questões de Simulado</div>
+                </div>
+                <div class="stat-item-landing">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Acesso ao Conteúdo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-landing">
+        <div class="container-landing">
+            <div class="cta-content">
+                <div class="cta-icon">🎓</div>
+                <h2 class="cta-title">Pronto para começar a estudar?</h2>
+                <p class="cta-subtitle">Junte-se a milhares de estudantes que já estão melhorando suas notas com o Plantão Aluno.</p>
+                <a href="pages/login.html" class="btn-cta">Criar Conta Grátis →</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
+    <footer class="footer-landing">
+        <div class="container-landing">
             <p>&copy; 2025 Plantão Aluno. Todos os direitos reservados.</p>
         </div>
     </footer>
