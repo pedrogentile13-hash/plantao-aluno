@@ -27,8 +27,78 @@ function initResumos() {
 
         if (content.unlockedBimestres.includes(bimestre)) {
             tab.classList.remove('locked');
+            // Remover ícone de cadeado e span "Em Breve" se existirem
+            const lockIcon = tab.querySelector('.lock-icon');
+            const comingSoon = tab.querySelector('.coming-soon');
+            if (lockIcon) lockIcon.remove();
+            if (comingSoon) comingSoon.remove();
             tab.addEventListener('click', () => switchBimestre(bimestre));
         }
+    });
+
+    // Desbloquear matérias para cada bimestre
+    content.unlockedBimestres.forEach(bimestre => {
+        const bimestreContent = document.getElementById(`bimestre-${bimestre}`);
+        if (!bimestreContent) return;
+
+        const materiaCards = bimestreContent.querySelectorAll('.materia-card');
+        const unlockedMaterias = content.unlockedMaterias[bimestre] || [];
+
+        materiaCards.forEach(card => {
+            // Pegar o nome da matéria do card (título h3)
+            const materiaTitle = card.querySelector('h3');
+            if (!materiaTitle) return;
+
+            const materiaText = materiaTitle.textContent.toLowerCase();
+
+            // Mapear o título para o ID da matéria
+            const materiaMap = {
+                'matemática': 'matematica',
+                'geografia': 'geografia',
+                'história': 'historia',
+                'português': 'portugues',
+                'física': 'fisica',
+                'química': 'quimica',
+                'biologia': 'biologia',
+                'inglês': 'ingles'
+            };
+
+            const materiaId = materiaMap[materiaText];
+
+            if (materiaId && unlockedMaterias.includes(materiaId)) {
+                // Desbloquear a matéria
+                card.classList.remove('locked');
+                card.classList.add('unlocked');
+
+                // Remover "Em breve" e trocar por descrição apropriada
+                const description = card.querySelector('.materia-description');
+                if (description && description.textContent === 'Em breve') {
+                    const descriptions = {
+                        'matematica': 'Números, equações, geometria e álgebra',
+                        'geografia': 'Mapas, territórios, clima e geopolítica',
+                        'historia': 'Eventos históricos, períodos e civilizações',
+                        'portugues': 'Gramática, literatura e interpretação de textos',
+                        'fisica': 'Mecânica, energia, movimento e forças',
+                        'quimica': 'Matéria, reações, elementos e compostos',
+                        'biologia': 'Seres vivos, células, ecologia e evolução',
+                        'ingles': 'Vocabulário, gramática e conversação'
+                    };
+                    description.textContent = descriptions[materiaId];
+                }
+
+                // Trocar o badge de status
+                const statusBadge = card.querySelector('.status-badge');
+                if (statusBadge && statusBadge.classList.contains('coming-soon')) {
+                    statusBadge.classList.remove('coming-soon');
+                    statusBadge.classList.add('available');
+                    statusBadge.innerHTML = '✅ Disponível';
+                }
+
+                // Adicionar evento de click
+                card.style.cursor = 'pointer';
+                card.onclick = () => openMateria(materiaId, bimestre);
+            }
+        });
     });
 }
 
@@ -532,6 +602,12 @@ style.textContent = `
     .alternativa-label input[type="radio"] {
         width: 20px;
         height: 20px;
+    }
+
+    /* Status badge disponível */
+    .status-badge.available {
+        background: var(--success-color);
+        color: white;
     }
 `;
 document.head.appendChild(style);
