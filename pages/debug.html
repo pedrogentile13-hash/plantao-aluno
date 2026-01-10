@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Banco de Dados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #60a5fa;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 32px;
+        }
+
+        .section {
+            background: #334155;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #34d399;
+            font-size: 24px;
+        }
+
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #ef4444;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: #10b981;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        pre {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 2px solid #475569;
+            color: #fbbf24;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #475569;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #60a5fa;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #1e3a8a;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .warning-box {
+            background: #7c2d12;
+            border-left: 4px solid #ea580c;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #1e293b;
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #475569;
+        }
+
+        table th {
+            background: #475569;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            color: #3b82f6;
+        }
+
+        .btn-small {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+        }
+
+        select {
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 2px solid #475569;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        select:hover {
+            border-color: #60a5fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Voltar para o site</a>
+
+        <h1>🗄️ Banco de Dados - LocalStorage</h1>
+
+        <div class="info-box">
+            <strong>ℹ️ Informação:</strong> Este painel mostra todos os dados armazenados no LocalStorage do navegador.
+        </div>
+
+        <!-- Estatísticas -->
+        <div class="section">
+            <h2>📊 Estatísticas Gerais</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalUsers">0</div>
+                    <div class="stat-label">Total de Usuários</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalResumos">0</div>
+                    <div class="stat-label">Resumos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalVideos">0</div>
+                    <div class="stat-label">Videoaulas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalSimulados">0</div>
+                    <div class="stat-label">Simulados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalResults">0</div>
+                    <div class="stat-label">Resultados</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usuários -->
+        <div class="section">
+            <div class="section-header">
+                <h2>👥 Usuários Cadastrados</h2>
+                <button class="btn" onclick="toggleSection('usersData')">Mostrar/Ocultar JSON</button>
+            </div>
+            <div class="info-box">
+                <strong>⚡ Controles Disponíveis:</strong>
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li><strong>Ano:</strong> Altere o ano escolar do usuário (8º ou 9º ano)</li>
+                    <li><strong>Plano:</strong> Altere o plano do usuário diretamente na tabela (Grátis, Básico, Premium)</li>
+                    <li><strong>Admin:</strong> Torne qualquer usuário admin ou remova o status de admin</li>
+                    <li><strong>Excluir:</strong> Remova permanentemente um usuário do banco de dados</li>
+                </ul>
+            </div>
+            <div id="usersTable"></div>
+            <pre id="usersData" style="display: none;"></pre>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="section">
+            <div class="section-header">
+                <h2>📚 Conteúdo do Site</h2>
+                <button class="btn" onclick="toggleSection('contentData')">Mostrar/Ocultar</button>
+            </div>
+            <pre id="contentData" style="display: none;"></pre>
+        </div>
+
+        <!-- Resultados -->
+        <div class="section">
+            <div class="section-header">
+                <h2>📊 Resultados dos Simulados</h2>
+                <button class="btn" onclick="toggleSection('resultsData')">Mostrar/Ocultar</button>
+            </div>
+            <div id="resultsTable"></div>
+            <pre id="resultsData" style="display: none;"></pre>
+        </div>
+
+        <!-- Ações -->
+        <div class="section">
+            <h2>⚙️ Ações</h2>
+            <div class="warning-box">
+                <strong>⚠️ Atenção:</strong> As ações abaixo são irreversíveis!
+            </div>
+            <div class="actions">
+                <button class="btn btn-success" onclick="exportData()">📥 Exportar Dados (JSON)</button>
+                <button class="btn" onclick="reloadData()">🔄 Recarregar Dados</button>
+                <button class="btn btn-danger" onclick="clearDatabase()">🗑️ Limpar Banco de Dados</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/database.js"></script>
+    <script>
+        function loadDebugData() {
+            // Estatísticas
+            const users = DB.getUsers();
+            const content = DB.getContent();
+            const results = DB.getResults();
+
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('totalResumos').textContent = content.resumos.length;
+            document.getElementById('totalVideos').textContent = content.videoaulas.length;
+            document.getElementById('totalSimulados').textContent = content.simulados.length;
+            document.getElementById('totalResults').textContent = results.length;
+
+            // Usuários - Tabela com controles de edição
+            let usersTable = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Ano</th>
+                            <th>Plano</th>
+                            <th>Admin</th>
+                            <th>Cadastro</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            users.forEach(user => {
+                usersTable += `
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>
+                            <select onchange="changeSchoolYear(${user.id}, this.value)">
+                                <option value="8" ${user.schoolYear === '8' ? 'selected' : ''}>8º ano</option>
+                                <option value="9" ${user.schoolYear === '9' ? 'selected' : ''}>9º ano</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select onchange="changePlan(${user.id}, this.value)">
+                                <option value="gratis" ${user.plan === 'gratis' ? 'selected' : ''}>Grátis</option>
+                                <option value="basico" ${user.plan === 'basico' ? 'selected' : ''}>Básico</option>
+                                <option value="premium" ${user.plan === 'premium' ? 'selected' : ''}>Premium</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select onchange="toggleAdmin(${user.id}, this.value === 'true')">
+                                <option value="true" ${user.isAdmin ? 'selected' : ''}>✅ Sim</option>
+                                <option value="false" ${!user.isAdmin ? 'selected' : ''}>❌ Não</option>
+                            </select>
+                        </td>
+                        <td>${new Date(user.createdAt).toLocaleString('pt-BR')}</td>
+                        <td>
+                            <button class="btn btn-small btn-danger" onclick="deleteUser(${user.id})">🗑️ Excluir</button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            usersTable += `</tbody></table>`;
+            document.getElementById('usersTable').innerHTML = usersTable;
+
+            // Usuários - JSON
+            document.getElementById('usersData').textContent = JSON.stringify(users, null, 2);
+
+            // Conteúdo - JSON
+            document.getElementById('contentData').textContent = JSON.stringify(content, null, 2);
+
+            // Resultados - Tabela
+            let resultsTable = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>User ID</th>
+                            <th>Simulado ID</th>
+                            <th>Matéria</th>
+                            <th>Bimestre</th>
+                            <th>Nota</th>
+                            <th>Acertos</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            results.forEach(result => {
+                resultsTable += `
+                    <tr>
+                        <td>${result.id}</td>
+                        <td>${result.userId}</td>
+                        <td>${result.simuladoId}</td>
+                        <td>${result.materia}</td>
+                        <td>${result.bimestre}º</td>
+                        <td><strong>${result.nota.toFixed(1)}</strong></td>
+                        <td>${result.acertos}/${result.totalQuestoes}</td>
+                        <td>${new Date(result.date).toLocaleString('pt-BR')}</td>
+                    </tr>
+                `;
+            });
+
+            resultsTable += `</tbody></table>`;
+            document.getElementById('resultsTable').innerHTML = resultsTable;
+
+            // Resultados - JSON
+            document.getElementById('resultsData').textContent = JSON.stringify(results, null, 2);
+        }
+
+        function toggleSection(id) {
+            const element = document.getElementById(id);
+            element.style.display = element.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function reloadData() {
+            loadDebugData();
+            alert('✅ Dados recarregados!');
+        }
+
+        function exportData() {
+            const data = {
+                users: DB.getUsers(),
+                content: DB.getContent(),
+                results: DB.getResults(),
+                exportDate: new Date().toISOString()
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `plantaoaluno_backup_${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+
+            alert('✅ Dados exportados com sucesso!');
+        }
+
+        function clearDatabase() {
+            if (confirm('⚠️ ATENÇÃO!\n\nIsso vai apagar TODOS os dados do banco!\n\nTem certeza?')) {
+                if (confirm('🚨 ÚLTIMA CONFIRMAÇÃO!\n\nRealmente deseja limpar tudo?\n\n(Isso não pode ser desfeito)')) {
+                    localStorage.clear();
+                    alert('✅ Banco de dados limpo!\n\nA página será recarregada.');
+                    location.reload();
+                }
+            }
+        }
+
+        function changeSchoolYear(userId, newYear) {
+            const user = DB.getUsers().find(u => u.id === userId);
+            if (!user) return;
+
+            DB.updateUser(userId, { schoolYear: newYear });
+
+            // Se for o usuário logado, atualizar também
+            const currentUser = DB.getCurrentUser();
+            if (currentUser && currentUser.id === userId) {
+                DB.updateCurrentUser({ schoolYear: newYear });
+            }
+
+            alert(`✅ Ano escolar de ${user.name} alterado para: ${newYear}º ano`);
+            loadDebugData();
+        }
+
+        function changePlan(userId, newPlan) {
+            const user = DB.getUsers().find(u => u.id === userId);
+            if (!user) return;
+
+            DB.updateUser(userId, { plan: newPlan });
+
+            // Se for o usuário logado, atualizar também
+            const currentUser = DB.getCurrentUser();
+            if (currentUser && currentUser.id === userId) {
+                DB.updateCurrentUser({ plan: newPlan });
+            }
+
+            alert(`✅ Plano de ${user.name} alterado para: ${newPlan.toUpperCase()}`);
+            loadDebugData();
+        }
+
+        function toggleAdmin(userId, isAdmin) {
+            const user = DB.getUsers().find(u => u.id === userId);
+            if (!user) return;
+
+            DB.updateUser(userId, { isAdmin: isAdmin });
+
+            // Se for o usuário logado, atualizar também
+            const currentUser = DB.getCurrentUser();
+            if (currentUser && currentUser.id === userId) {
+                DB.updateCurrentUser({ isAdmin: isAdmin });
+            }
+
+            const status = isAdmin ? 'ADMIN' : 'USUÁRIO NORMAL';
+            alert(`✅ ${user.name} agora é: ${status}`);
+            loadDebugData();
+        }
+
+        function deleteUser(userId) {
+            const user = DB.getUsers().find(u => u.id === userId);
+            if (!user) return;
+
+            if (confirm(`⚠️ Excluir usuário?\n\nNome: ${user.name}\nEmail: ${user.email}\n\nEsta ação não pode ser desfeita!`)) {
+                // Verificar se não está tentando excluir o usuário logado
+                const currentUser = DB.getCurrentUser();
+                if (currentUser && currentUser.id === userId) {
+                    alert('❌ Você não pode excluir o usuário que está logado!\n\nFaça logout primeiro.');
+                    return;
+                }
+
+                DB.deleteUser(userId);
+                alert(`✅ Usuário ${user.name} excluído com sucesso!`);
+                loadDebugData();
+            }
+        }
+
+        // Carregar dados ao iniciar
+        loadDebugData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - Plantão Aluno</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">⚙️ Admin</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="icon">🏠</span>
+                <span>Voltar ao Dashboard</span>
+            </a>
+            <a href="admin.html" class="sidebar-link active">
+                <span class="icon">⚙️</span>
+                <span>Painel Admin</span>
+            </a>
+            <a href="#" class="sidebar-link" onclick="logout()">
+                <span class="icon">🚪</span>
+                <span>Sair</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="topbar">
+            <h2 class="page-title">Painel de Controle - Admin</h2>
+            <div class="user-info">
+                <span id="userName">Admin</span>
+                <span class="admin-badge">ADMIN</span>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Estatísticas Gerais -->
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <h4>Total de Alunos</h4>
+                    <p class="stat-value" id="totalStudents">0</p>
+                </div>
+                <div class="admin-stat-card">
+                    <h4>Assinaturas Ativas</h4>
+                    <p class="stat-value" id="activeSubscriptions">0</p>
+                </div>
+                <div class="admin-stat-card">
+                    <h4>Nota Média Geral</h4>
+                    <p class="stat-value" id="generalAverage">-</p>
+                </div>
+                <div class="admin-stat-card">
+                    <h4>Simulados Realizados</h4>
+                    <p class="stat-value" id="totalSimulados">0</p>
+                </div>
+            </div>
+
+            <!-- Tabs de Gerenciamento -->
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="users">Alunos</button>
+                <button class="admin-tab" data-tab="content">Gerenciar Conteúdo</button>
+                <button class="admin-tab" data-tab="subscriptions">Assinaturas</button>
+                <button class="admin-tab" data-tab="results">Resultados</button>
+            </div>
+
+            <!-- Tab: Alunos -->
+            <div id="tab-users" class="admin-tab-content active">
+                <div class="section-card">
+                    <h3>Alunos Cadastrados</h3>
+                    <div id="usersTable"></div>
+                </div>
+            </div>
+
+            <!-- Tab: Gerenciar Conteúdo -->
+            <div id="tab-content" class="admin-tab-content">
+                <div class="content-management-grid">
+                    <!-- Gerenciar Resumos -->
+                    <div class="section-card">
+                        <h3>Adicionar Resumo</h3>
+                        <form id="addResumoForm" class="admin-form">
+                            <div class="form-group">
+                                <label>Matéria</label>
+                                <select id="resumoMateria" required>
+                                    <option value="matematica">Matemática</option>
+                                    <option value="geografia">Geografia</option>
+                                    <option value="historia">História</option>
+                                    <option value="portugues">Português</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="biologia">Biologia</option>
+                                    <option value="ingles">Inglês</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bimestre</label>
+                                <select id="resumoBimestre" required>
+                                    <option value="1">1º Bimestre</option>
+                                    <option value="2">2º Bimestre</option>
+                                    <option value="3">3º Bimestre</option>
+                                    <option value="4">4º Bimestre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Título</label>
+                                <input type="text" id="resumoTitulo" required placeholder="Ex: Fatoração">
+                            </div>
+                            <div class="form-group">
+                                <label>Conteúdo</label>
+                                <textarea id="resumoConteudo" rows="6" required placeholder="Digite o conteúdo do resumo..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Adicionar Resumo</button>
+                        </form>
+                    </div>
+
+                    <!-- Gerenciar Videoaulas -->
+                    <div class="section-card">
+                        <h3>Adicionar Videoaula</h3>
+                        <form id="addVideoForm" class="admin-form">
+                            <div class="form-group">
+                                <label>Matéria</label>
+                                <select id="videoMateria" required>
+                                    <option value="matematica">Matemática</option>
+                                    <option value="geografia">Geografia</option>
+                                    <option value="historia">História</option>
+                                    <option value="portugues">Português</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="biologia">Biologia</option>
+                                    <option value="ingles">Inglês</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Bimestre</label>
+                                <select id="videoBimestre" required>
+                                    <option value="1">1º Bimestre</option>
+                                    <option value="2">2º Bimestre</option>
+                                    <option value="3">3º Bimestre</option>
+                                    <option value="4">4º Bimestre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Título</label>
+                                <input type="text" id="videoTitulo" required placeholder="Ex: Introdução à Fatoração">
+                            </div>
+                            <div class="form-group">
+                                <label>URL do Vídeo</label>
+                                <input type="url" id="videoUrl" required placeholder="https://youtube.com/...">
+                            </div>
+                            <div class="form-group">
+                                <label>Duração</label>
+                                <input type="text" id="videoDuracao" required placeholder="Ex: 15:30">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Adicionar Videoaula</button>
+                        </form>
+                    </div>
+
+                    <!-- Gerenciar Simulados -->
+                    <div class="section-card full-width">
+                        <h3>Adicionar Simulado</h3>
+                        <form id="addSimuladoForm" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Matéria</label>
+                                    <select id="simuladoMateria" required>
+                                        <option value="matematica">Matemática</option>
+                                        <option value="geografia">Geografia</option>
+                                        <option value="historia">História</option>
+                                        <option value="portugues">Português</option>
+                                        <option value="fisica">Física</option>
+                                        <option value="quimica">Química</option>
+                                        <option value="biologia">Biologia</option>
+                                        <option value="ingles">Inglês</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bimestre</label>
+                                    <select id="simuladoBimestre" required>
+                                        <option value="1">1º Bimestre</option>
+                                        <option value="2">2º Bimestre</option>
+                                        <option value="3">3º Bimestre</option>
+                                        <option value="4">4º Bimestre</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Título</label>
+                                    <input type="text" id="simuladoTitulo" required placeholder="Ex: Simulado de Fatoração">
+                                </div>
+                            </div>
+                            <div class="questions-container" id="questionsContainer">
+                                <h4>Questões (15 no total: 5 fáceis, 5 médias, 5 difíceis)</h4>
+                                <p class="form-hint">As questões serão adicionadas dinamicamente</p>
+                            </div>
+                            <button type="button" class="btn btn-outline" onclick="addQuestion()">+ Adicionar Questão</button>
+                            <button type="submit" class="btn btn-primary">Criar Simulado</button>
+                        </form>
+                    </div>
+
+                    <!-- Gerenciar Bimestres e Matérias -->
+                    <div class="section-card full-width">
+                        <h3>🔓 Gerenciar Bimestres e Matérias</h3>
+
+                        <!-- Bimestres -->
+                        <h4 style="margin-top: 20px;">Bimestres</h4>
+                        <div class="unlock-controls">
+                            <div class="form-group">
+                                <label>Bimestre</label>
+                                <select id="manageBimestre">
+                                    <option value="1">1º Bimestre</option>
+                                    <option value="2">2º Bimestre</option>
+                                    <option value="3">3º Bimestre</option>
+                                    <option value="4">4º Bimestre</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" onclick="unlockBimestre()">✅ Desbloquear</button>
+                            <button class="btn btn-danger" onclick="lockBimestre()">🔒 Bloquear</button>
+                        </div>
+
+                        <!-- Matérias -->
+                        <h4 style="margin-top: 20px;">Matérias</h4>
+                        <div class="unlock-controls">
+                            <div class="form-group">
+                                <label>Matéria</label>
+                                <select id="manageMateria">
+                                    <option value="matematica">Matemática</option>
+                                    <option value="geografia">Geografia</option>
+                                    <option value="historia">História</option>
+                                    <option value="portugues">Português</option>
+                                    <option value="fisica">Física</option>
+                                    <option value="quimica">Química</option>
+                                    <option value="biologia">Biologia</option>
+                                    <option value="ingles">Inglês</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>No Bimestre</label>
+                                <select id="manageMateriaBimestre">
+                                    <option value="1">1º Bimestre</option>
+                                    <option value="2">2º Bimestre</option>
+                                    <option value="3">3º Bimestre</option>
+                                    <option value="4">4º Bimestre</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" onclick="unlockMateria()">✅ Desbloquear</button>
+                            <button class="btn btn-danger" onclick="lockMateria()">🔒 Bloquear</button>
+                        </div>
+                    </div>
+
+                    <!-- Excluir Conteúdo -->
+                    <div class="section-card full-width">
+                        <h3>🗑️ Excluir Conteúdo</h3>
+                        <div id="contentManagement">
+                            <div class="content-lists">
+                                <div class="content-list-section">
+                                    <h4>Resumos</h4>
+                                    <div id="resumosList"></div>
+                                </div>
+                                <div class="content-list-section">
+                                    <h4>Videoaulas</h4>
+                                    <div id="videoaulasList"></div>
+                                </div>
+                                <div class="content-list-section">
+                                    <h4>Simulados</h4>
+                                    <div id="simuladosList"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Assinaturas -->
+            <div id="tab-subscriptions" class="admin-tab-content">
+                <div class="section-card">
+                    <h3>Gerenciar Assinaturas</h3>
+                    <div id="subscriptionsTable"></div>
+                </div>
+            </div>
+
+            <!-- Tab: Resultados -->
+            <div id="tab-results" class="admin-tab-content">
+                <div class="section-card">
+                    <h3>Resultados dos Simulados</h3>
+                    <div id="resultsTable"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

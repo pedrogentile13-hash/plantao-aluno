@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Plantão Aluno</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1 class="auth-logo">📚 Plantão Aluno</h1>
+            <h2 class="auth-title" id="authTitle">Entrar na sua conta</h2>
+
+            <!-- Formulário de Login -->
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </form>
+
+            <!-- Formulário de Cadastro -->
+            <form id="signupForm" class="auth-form" style="display: none;">
+                <div class="form-group">
+                    <label for="signup-name">Nome completo</label>
+                    <input type="text" id="signup-name" name="name" required placeholder="Seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" name="email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Senha</label>
+                    <input type="password" id="signup-password" name="password" required placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label for="school-year">Ano escolar</label>
+                    <select id="school-year" name="schoolYear" required>
+                        <option value="">Selecione seu ano</option>
+                        <option value="8">8º ano</option>
+                        <option value="9">9º ano</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Criar conta</button>
+            </form>
+
+            <!-- Toggle entre Login e Cadastro -->
+            <div class="auth-toggle">
+                <p id="toggleText">Não tem uma conta? <a href="#" id="toggleLink">Cadastre-se</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+</body>
+</html>

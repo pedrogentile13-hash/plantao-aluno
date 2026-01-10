@@ -1,0 +1,189 @@
+╔══════════════════════════════════════════════════════════════════╗
+║              📚 PLANTÃO ALUNO - GUIA RÁPIDO                      ║
+╚══════════════════════════════════════════════════════════════════╝
+
+🚀 COMO INICIAR O PROJETO
+═════════════════════════════
+
+1. Abra o arquivo "index.html" em qualquer navegador moderno
+   (Chrome, Firefox, Safari, Edge)
+
+2. Navegue pelo site:
+   - Conheça os planos na página inicial
+   - Clique em "Entrar" para fazer login/cadastro
+
+
+🔐 ACESSOS PADRÃO
+═════════════════════════════
+
+┌─────────────────────────────────────────────────────┐
+│ ADMINISTRADOR (Acesso total ao painel admin)        │
+├─────────────────────────────────────────────────────┤
+│ Email:    admin@plantaoaluno.com                    │
+│ Senha:    admin123                                  │
+│ Plano:    Premium                                   │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│ ALUNO (Criar nova conta)                            │
+├─────────────────────────────────────────────────────┤
+│ 1. Clique em "Cadastre-se"                          │
+│ 2. Preencha seus dados                              │
+│ 3. Escolha seu ano (8º ou 9º)                       │
+│ 4. Crie sua conta                                   │
+└─────────────────────────────────────────────────────┘
+
+
+📋 FUNCIONALIDADES DISPONÍVEIS
+═════════════════════════════
+
+PARA ALUNOS:
+✅ Dashboard com estatísticas
+✅ Resumos de Matemática (1º Bimestre)
+✅ Simulado de Fatoração (15 questões)
+✅ Videoaulas (Premium)
+✅ Perfil e histórico de notas
+✅ Gerenciamento de assinatura
+
+PARA ADMINS:
+✅ Painel com estatísticas gerais
+✅ Gerenciar alunos e planos
+✅ Adicionar resumos, videoaulas e simulados
+✅ Desbloquear matérias e bimestres
+✅ Visualizar resultados de todos os alunos
+
+
+💳 PLANOS DISPONÍVEIS
+═════════════════════════════
+
+┌──────────┬──────────────┬────────────┬───────────┐
+│  PLANO   │    PREÇO     │  RESUMOS   │ SIMULADOS │
+├──────────┼──────────────┼────────────┼───────────┤
+│ Grátis   │   R$ 0,00    │  Limitado  │ 1/bimestre│
+│ Básico   │  R$ 22,90/mês│   Todos    │ 4/bimestre│
+│ Premium  │  R$ 34,90/mês│   Todos    │ Ilimitado │
+└──────────┴──────────────┴────────────┴───────────┘
+
+* Videoaulas disponíveis apenas no Premium
+
+
+🎯 CONTEÚDO INICIAL
+═════════════════════════════
+
+DESBLOQUEADO:
+• 1º Bimestre
+• Matemática - Resumo de Fatoração
+• Matemática - Simulado de Fatoração (15 questões)
+• Matemática - 2 Videoaulas
+
+BLOQUEADO (pode ser desbloqueado pelo admin):
+• 2º, 3º e 4º Bimestres
+• Demais matérias (Geografia, História, Português, etc.)
+
+
+🎓 COMO FAZER UM SIMULADO
+═════════════════════════════
+
+1. Acesse "Resumos" no menu lateral
+2. Clique em "Matemática"
+3. Role até "Simulados Disponíveis"
+4. Clique em "Iniciar Simulado"
+5. Responda as 15 questões
+6. Clique em "Finalizar Simulado"
+7. Veja sua nota e estatísticas
+
+SISTEMA DE PONTUAÇÃO:
+• 5 questões Fáceis = 1 ponto cada
+• 5 questões Médias = 2 pontos cada
+• 5 questões Difíceis = 3 pontos cada
+• Total: 30 pontos = Nota 10
+
+
+⚙️ PAINEL ADMINISTRATIVO
+═════════════════════════════
+
+COMO ACESSAR:
+1. Faça login com a conta admin
+2. Clique no ícone "⚙️ Painel Admin" no menu
+
+O QUE VOCÊ PODE FAZER:
+• Ver estatísticas de todos os alunos
+• Alterar planos de alunos
+• Adicionar novos resumos
+• Criar videoaulas
+• Montar simulados personalizados
+• Desbloquear conteúdo
+
+
+🔧 GERENCIAR CONTEÚDO (ADMIN)
+═════════════════════════════
+
+ADICIONAR RESUMO:
+1. Vá em "Gerenciar Conteúdo"
+2. Preencha matéria, bimestre, título
+3. Digite o conteúdo (suporta markdown)
+4. Clique em "Adicionar Resumo"
+
+CRIAR SIMULADO:
+1. Vá em "Gerenciar Conteúdo"
+2. Clique em "+ Adicionar Questão" (15 vezes)
+3. Para cada questão, defina:
+   - Dificuldade (Fácil, Médio, Difícil)
+   - Enunciado
+   - 4 alternativas
+   - Resposta correta
+4. Clique em "Criar Simulado"
+
+DESBLOQUEAR MATÉRIA:
+1. Vá em "Gerenciar Conteúdo"
+2. Escolha a matéria e o bimestre
+3. Clique em "Desbloquear Matéria"
+
+
+💾 DADOS E ARMAZENAMENTO
+═════════════════════════════
+
+• Os dados são salvos no LocalStorage do navegador
+• Cada navegador/computador tem seus próprios dados
+• Para resetar tudo, abra o Console (F12) e digite:
+  localStorage.clear(); location.reload();
+
+
+📱 COMPATIBILIDADE
+═════════════════════════════
+
+✅ Google Chrome
+✅ Mozilla Firefox
+✅ Microsoft Edge
+✅ Safari
+✅ Dispositivos móveis (design responsivo)
+
+
+⚠️ IMPORTANTE
+═════════════════════════════
+
+Este é um projeto de DEMONSTRAÇÃO EDUCACIONAL.
+
+NÃO use em produção real sem implementar:
+• Banco de dados real (não LocalStorage)
+• Autenticação segura com JWT
+• Criptografia de senhas
+• Sistema de pagamento real
+• Backend com API REST
+
+
+📞 SUPORTE
+═════════════════════════════
+
+Em caso de dúvidas:
+📧 Email: contato@plantaoaluno.com.br
+📱 WhatsApp: (11) 9999-9999
+
+
+═════════════════════════════════════════════════════════════════
+
+🎉 APROVEITE O PLANTÃO ALUNO!
+
+Boa sorte nos estudos! 📚✨
+
+═════════════════════════════════════════════════════════════════

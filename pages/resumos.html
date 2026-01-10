@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumos - Plantão Aluno</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">📚 Plantão Aluno</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="icon">🏠</span>
+                <span>Início</span>
+            </a>
+            <a href="resumos.html" class="sidebar-link active">
+                <span class="icon">📝</span>
+                <span>Resumos</span>
+            </a>
+            <a href="videoaulas.html" class="sidebar-link">
+                <span class="icon">🎥</span>
+                <span>Videoaulas</span>
+            </a>
+            <a href="perfil.html" class="sidebar-link">
+                <span class="icon">👤</span>
+                <span>Perfil</span>
+            </a>
+            <a href="#" class="sidebar-link" id="adminLink" style="display: none;">
+                <span class="icon">⚙️</span>
+                <span>Painel Admin</span>
+            </a>
+            <a href="#" class="sidebar-link" onclick="logout()">
+                <span class="icon">🚪</span>
+                <span>Sair</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="topbar">
+            <h2 class="page-title">Resumos e Simulados</h2>
+            <div class="user-info">
+                <span id="userName">Carregando...</span>
+                <span class="user-plan" id="userPlan">Grátis</span>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Navegação de Bimestres -->
+            <div class="bimestre-tabs">
+                <button class="bimestre-tab active" data-bimestre="1">1º Bimestre</button>
+                <button class="bimestre-tab locked" data-bimestre="2">
+                    2º Bimestre
+                    <span class="lock-icon">🔒</span>
+                    <span class="coming-soon">Em Breve</span>
+                </button>
+                <button class="bimestre-tab locked" data-bimestre="3">
+                    3º Bimestre
+                    <span class="lock-icon">🔒</span>
+                    <span class="coming-soon">Em Breve</span>
+                </button>
+                <button class="bimestre-tab locked" data-bimestre="4">
+                    4º Bimestre
+                    <span class="lock-icon">🔒</span>
+                    <span class="coming-soon">Em Breve</span>
+                </button>
+            </div>
+
+            <!-- Conteúdo do Bimestre -->
+            <div id="bimestre-1" class="bimestre-content active">
+                <div class="materias-grid">
+                    <!-- Matemática (Desbloqueada) -->
+                    <div class="materia-card unlocked" onclick="openMateria('matematica', 1)">
+                        <div class="materia-header">
+                            <span class="materia-icon">🔢</span>
+                            <h3>Matemática</h3>
+                        </div>
+                        <p class="materia-description">Fatoração e expressões algébricas</p>
+                        <div class="materia-status">
+                            <span class="status-badge available">Disponível</span>
+                        </div>
+                    </div>
+
+                    <!-- Geografia (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">🌍</span>
+                            <h3>Geografia</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+
+                    <!-- História (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">📜</span>
+                            <h3>História</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+
+                    <!-- Português (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">📖</span>
+                            <h3>Português</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+
+                    <!-- Física (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">⚡</span>
+                            <h3>Física</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+
+                    <!-- Química (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">🧪</span>
+                            <h3>Química</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+
+                    <!-- Biologia (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">🧬</span>
+                            <h3>Biologia</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+
+                    <!-- Inglês (Bloqueada) -->
+                    <div class="materia-card locked">
+                        <div class="materia-header">
+                            <span class="materia-icon">🇬🇧</span>
+                            <h3>Inglês</h3>
+                        </div>
+                        <p class="materia-description">Em breve</p>
+                        <div class="materia-status">
+                            <span class="status-badge coming-soon">🔒 Em Breve</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Matéria -->
+    <div id="materiaModal" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeMateriaModal()">&times;</span>
+            <div id="materiaContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal de Simulado -->
+    <div id="simuladoModal" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeSimuladoModal()">&times;</span>
+            <div id="simuladoContent"></div>
+        </div>
+    </div>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/resumos.js"></script>
+</body>
+</html>

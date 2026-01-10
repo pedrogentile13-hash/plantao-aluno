@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Plantão Aluno</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">📚 Plantão Aluno</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link active">
+                <span class="icon">🏠</span>
+                <span>Início</span>
+            </a>
+            <a href="resumos.html" class="sidebar-link">
+                <span class="icon">📝</span>
+                <span>Resumos</span>
+            </a>
+            <a href="videoaulas.html" class="sidebar-link">
+                <span class="icon">🎥</span>
+                <span>Videoaulas</span>
+            </a>
+            <a href="perfil.html" class="sidebar-link">
+                <span class="icon">👤</span>
+                <span>Perfil</span>
+            </a>
+            <a href="#" class="sidebar-link" id="adminLink" style="display: none;">
+                <span class="icon">⚙️</span>
+                <span>Painel Admin</span>
+            </a>
+            <a href="#" class="sidebar-link" onclick="logout()">
+                <span class="icon">🚪</span>
+                <span>Sair</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="topbar">
+            <h2 class="page-title">Dashboard</h2>
+            <div class="user-info">
+                <span id="userName">Carregando...</span>
+                <span class="user-plan" id="userPlan">Grátis</span>
+            </div>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Boas vindas -->
+            <div class="welcome-card">
+                <h3>Bem-vindo de volta! 👋</h3>
+                <p>Continue seus estudos de onde parou</p>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <h4>Média Geral</h4>
+                        <p class="stat-value" id="averageGrade">-</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <h4>Simulados Feitos</h4>
+                        <p class="stat-value" id="simuladosCompleted">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-info">
+                        <h4>Melhor Nota</h4>
+                        <p class="stat-value" id="bestGrade">-</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-info">
+                        <h4>Seu Ano</h4>
+                        <p class="stat-value" id="schoolYear">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plano Atual -->
+            <div class="section-card">
+                <h3>Seu Plano Atual</h3>
+                <div class="current-plan" id="currentPlanInfo">
+                    <div class="plan-info">
+                        <h4 id="planName">Grátis</h4>
+                        <p id="planDescription">Você está usando o plano gratuito</p>
+                    </div>
+                    <button class="btn btn-primary" onclick="showUpgradeModal()">Fazer Upgrade</button>
+                </div>
+            </div>
+
+            <!-- Acesso Rápido -->
+            <div class="section-card">
+                <h3>Acesso Rápido</h3>
+                <div class="quick-links">
+                    <a href="resumos.html" class="quick-link-card">
+                        <div class="quick-link-icon">📝</div>
+                        <h4>Resumos</h4>
+                        <p>Estude com nossos resumos</p>
+                    </a>
+                    <a href="videoaulas.html" class="quick-link-card">
+                        <div class="quick-link-icon">🎥</div>
+                        <h4>Videoaulas</h4>
+                        <p>Assista às aulas</p>
+                    </a>
+                    <a href="resumos.html#simulados" class="quick-link-card">
+                        <div class="quick-link-icon">📊</div>
+                        <h4>Simulados</h4>
+                        <p>Teste seus conhecimentos</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Upgrade -->
+    <div id="upgradeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUpgradeModal()">&times;</span>
+            <h2>Escolha seu plano</h2>
+            <div class="plans-grid-modal">
+                <div class="plan-card-modal">
+                    <h3>Básico</h3>
+                    <div class="plan-price">
+                        <span class="price-old">R$ 29,90</span>
+                        <span class="price">R$ 22,90</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ Todos os resumos</li>
+                        <li>✅ 4 simulados/bimestre</li>
+                        <li>✅ Suporte personalizado</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('basico')">Assinar</button>
+                </div>
+                <div class="plan-card-modal premium">
+                    <h3>Premium</h3>
+                    <div class="plan-price">
+                        <span class="price-old">R$ 49,90</span>
+                        <span class="price">R$ 34,90</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li>✅ Tudo do Básico</li>
+                        <li>✅ Todas as videoaulas</li>
+                        <li>✅ Todos os simulados</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('premium')">Assinar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

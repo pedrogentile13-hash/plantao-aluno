@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Plantão Aluno</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1 class="logo">📚 Plantão Aluno</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.html" class="sidebar-link">
+                <span class="icon">🏠</span>
+                <span>Início</span>
+            </a>
+            <a href="resumos.html" class="sidebar-link">
+                <span class="icon">📝</span>
+                <span>Resumos</span>
+            </a>
+            <a href="videoaulas.html" class="sidebar-link">
+                <span class="icon">🎥</span>
+                <span>Videoaulas</span>
+            </a>
+            <a href="perfil.html" class="sidebar-link active">
+                <span class="icon">👤</span>
+                <span>Perfil</span>
+            </a>
+            <a href="admin.html" class="sidebar-link" id="adminLink" style="display: none;">
+                <span class="icon">⚙️</span>
+                <span>Painel Admin</span>
+            </a>
+            <a href="#" class="sidebar-link" onclick="logout()">
+                <span class="icon">🚪</span>
+                <span>Sair</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="topbar">
+            <h2 class="page-title">Meu Perfil</h2>
+            <div class="user-info">
+                <span id="userName">Carregando...</span>
+                <span class="user-plan" id="userPlan">Grátis</span>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Informações da Conta -->
+            <div class="section-card">
+                <h3>Informações da Conta</h3>
+                <div class="profile-info">
+                    <div class="info-row">
+                        <span class="info-label">Nome:</span>
+                        <span class="info-value" id="profileName">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value" id="profileEmail">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Ano Escolar:</span>
+                        <span class="info-value" id="profileSchoolYear">-</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Plano Atual:</span>
+                        <span class="info-value" id="profilePlan">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desempenho -->
+            <div class="section-card">
+                <h3>Desempenho Acadêmico</h3>
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <h4>Nota Média</h4>
+                        <p class="performance-value" id="perfAverage">-</p>
+                        <span class="performance-label">Média geral dos simulados</span>
+                    </div>
+                    <div class="performance-card">
+                        <h4>Melhor Nota</h4>
+                        <p class="performance-value" id="perfBest">-</p>
+                        <span class="performance-label">Sua maior pontuação</span>
+                    </div>
+                    <div class="performance-card">
+                        <h4>Total de Simulados</h4>
+                        <p class="performance-value" id="perfTotal">0</p>
+                        <span class="performance-label">Simulados realizados</span>
+                    </div>
+                </div>
+
+                <!-- Histórico de Notas -->
+                <div class="grades-history">
+                    <h4>Histórico de Simulados</h4>
+                    <div id="gradesTable"></div>
+                </div>
+            </div>
+
+            <!-- Gerenciar Assinatura -->
+            <div class="section-card">
+                <h3>Gerenciar Assinatura</h3>
+                <div class="subscription-management">
+                    <div id="currentSubscription">
+                        <p>Plano atual: <strong id="subPlan">Grátis</strong></p>
+                        <p id="subInfo">Você está usando o plano gratuito</p>
+                    </div>
+                    <div class="subscription-actions">
+                        <button class="btn btn-primary" id="upgradeBtn" onclick="showUpgradeModal()">Fazer Upgrade</button>
+                        <button class="btn btn-outline" id="cancelBtn" onclick="cancelSubscription()" style="display: none;">Cancelar Assinatura</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ações da Conta -->
+            <div class="section-card danger-zone">
+                <h3>Zona de Perigo</h3>
+                <p class="danger-text">Essas ações são irreversíveis. Tenha cuidado!</p>
+                <button class="btn btn-danger" onclick="deleteAccount()">Excluir Conta</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal de Confirmação de Exclusão -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirmar Exclusão de Conta</h2>
+            <p>Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita e todos os seus dados serão permanentemente removidos.</p>
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeDeleteModal()">Cancelar</button>
+                <button class="btn btn-danger" onclick="confirmDeleteAccount()">Sim, excluir minha conta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cancelamento de Assinatura -->
+    <div id="cancelSubModal" class="modal">
+        <div class="modal-content">
+            <h2>Cancelar Assinatura</h2>
+            <p>Tem certeza que deseja cancelar sua assinatura? Você perderá acesso aos recursos premium no final do período atual.</p>
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeCancelSubModal()">Voltar</button>
+                <button class="btn btn-danger" onclick="confirmCancelSubscription()">Cancelar Assinatura</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/database.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
