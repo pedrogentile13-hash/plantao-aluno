@@ -162,11 +162,18 @@ function openMateria(materia, bimestre) {
 }
 
 function openResumo(moduloId) {
+    const currentUser = DB.getCurrentUser();
     const modulos = DB.getAllModulos();
     const modulo = modulos.find(m => m.id === moduloId);
 
     if (!modulo || !modulo.resumo) {
         alert('Resumo não disponível!');
+        return;
+    }
+
+    // Verificar se usuário tem plano gratuito
+    if (currentUser.plan === 'gratis') {
+        alert('📚 Resumos Exclusivos!\n\nOs resumos completos estão disponíveis apenas para assinantes dos planos Básico e Premium.\n\n✨ Faça upgrade agora e tenha acesso ilimitado a todo o conteúdo!');
         return;
     }
 

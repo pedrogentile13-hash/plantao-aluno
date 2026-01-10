@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limpar Dados - Plantão Aluno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        .success {
+            color: #10b981;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        .link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔄 Atualizar Sistema</h1>
+        <p>
+            Clique no botão abaixo para limpar os dados antigos e carregar as novas configurações:<br><br>
+            ✅ Todos os 4 bimestres desbloqueados<br>
+            ✅ Todas as 8 matérias disponíveis<br>
+            ✅ 10 módulos completos carregados
+        </p>
+        <button onclick="limparDados()">Limpar e Atualizar Dados</button>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function limparDados() {
+            // Limpar todo o localStorage
+            localStorage.clear();
+
+            // Mostrar mensagem de sucesso
+            const message = document.getElementById('message');
+            message.innerHTML = `
+                <p class="success">✅ Dados limpos com sucesso!</p>
+                <a href="index.html" class="link">Voltar para a página inicial →</a>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -14,10 +14,11 @@
     <header class="landing-header">
         <div class="container-landing">
             <div class="header-content-landing">
-                <div class="logo-landing">
-                    <div class="logo-icon">📚</div>
+                <a href="index.html" class="logo-landing">
+                    <img src="assets/images/logo.png" alt="Plantão Aluno" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="logo-icon" style="display:none;">📚</div>
                     <span class="logo-text">Plantão Aluno</span>
-                </div>
+                </a>
                 <nav class="nav-landing">
                     <a href="pages/login.html" class="btn-entrar">Entrar</a>
                     <a href="pages/login.html" class="btn-cadastrar">Cadastrar</a>
@@ -85,6 +86,12 @@
             <h2 class="section-title-landing">Escolha seu <span class="highlight-purple">plano ideal</span></h2>
             <p class="section-subtitle-landing">Planos flexíveis que cabem no seu bolso. Comece grátis ou aproveite nossas ofertas especiais!</p>
 
+            <!-- Toggle Mensal/Anual -->
+            <div class="billing-toggle">
+                <button class="toggle-btn active" data-billing="monthly">Mensal</button>
+                <button class="toggle-btn" data-billing="yearly">Anual <span class="discount-badge">-30%</span></button>
+            </div>
+
             <div class="plans-grid-landing">
                 <!-- Plano Grátis -->
                 <div class="plan-card-landing">
@@ -94,7 +101,7 @@
                         <span class="amount">0,00</span>
                     </div>
                     <ul class="plan-features-landing">
-                        <li class="feature-yes">✓ Acesso limitado aos resumos</li>
+                        <li class="feature-no">✗ Acesso aos resumos completos</li>
                         <li class="feature-no">✗ Acesso às videoaulas</li>
                         <li class="feature-no">✗ Suporte personalizado</li>
                         <li class="feature-yes">✓ 1 simulado por bimestre</li>
@@ -103,16 +110,17 @@
                 </div>
 
                 <!-- Plano Básico -->
-                <div class="plan-card-landing plan-highlight">
+                <div class="plan-card-landing plan-highlight" data-monthly-price="22.90" data-monthly-old="29.90" data-yearly-price="239.90" data-yearly-old="342.80">
                     <div class="plan-badge-landing">Janeiro25</div>
                     <h3 class="plan-name">Básico</h3>
                     <div class="plan-price-landing">
-                        <span class="price-old-landing">R$ 29,90</span>
+                        <span class="price-old-landing">R$ <span class="old-price-value">29,90</span></span>
                         <div>
                             <span class="currency">R$</span>
-                            <span class="amount">22,90</span>
+                            <span class="amount price-value">22,90</span>
                         </div>
-                        <span class="period-landing">/mês</span>
+                        <span class="period-landing"><span class="period-text">/mês</span></span>
+                        <span class="yearly-info" style="display:none; font-size: 12px; color: var(--text-secondary);">12x de R$ <span class="installment-value">19,99</span></span>
                     </div>
                     <ul class="plan-features-landing">
                         <li class="feature-yes">✓ Acesso a todos os Resumos</li>
@@ -124,17 +132,18 @@
                 </div>
 
                 <!-- Plano Premium -->
-                <div class="plan-card-landing plan-premium-landing">
+                <div class="plan-card-landing plan-premium-landing" data-monthly-price="34.90" data-monthly-old="49.90" data-yearly-price="359.90" data-yearly-old="598.80">
                     <div class="plan-badge-landing premium">Janeiro25</div>
                     <div class="popular-tag">Mais Popular</div>
                     <h3 class="plan-name white">Premium</h3>
                     <div class="plan-price-landing white">
-                        <span class="price-old-landing white">R$ 49,90</span>
+                        <span class="price-old-landing white">R$ <span class="old-price-value">49,90</span></span>
                         <div>
                             <span class="currency">R$</span>
-                            <span class="amount">34,90</span>
+                            <span class="amount price-value">34,90</span>
                         </div>
-                        <span class="period-landing">/mês</span>
+                        <span class="period-landing"><span class="period-text">/mês</span></span>
+                        <span class="yearly-info" style="display:none; font-size: 12px; color: rgba(255,255,255,0.8);">12x de R$ <span class="installment-value">29,99</span></span>
                     </div>
                     <ul class="plan-features-landing white">
                         <li class="feature-yes">✓ Tudo do plano Básico</li>

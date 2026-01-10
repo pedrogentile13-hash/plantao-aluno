@@ -54,6 +54,17 @@ body {
     font-size: 24px;
     font-weight: 700;
     color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    object-fit: cover;
 }
 
 .nav {
@@ -1300,6 +1311,48 @@ table th {
 .plans-landing {
     padding: 80px 0;
     background: #f9fafb;
+}
+
+.billing-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 32px 0;
+    background: white;
+    padding: 6px;
+    border-radius: 12px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.toggle-btn {
+    padding: 12px 32px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.toggle-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.discount-badge {
+    background: #10b981;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 .plans-grid-landing {
