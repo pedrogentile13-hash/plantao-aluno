@@ -48,65 +48,106 @@ function switchBimestre(bimestre) {
 
 function openMateria(materia, bimestre) {
     const currentUser = DB.getCurrentUser();
-    const resumos = DB.getResumos(materia, bimestre);
+    const modulos = DB.getModulos(materia, bimestre);
 
-    if (resumos.length === 0) {
-        alert('Nenhum resumo disponível ainda!');
+    if (modulos.length === 0) {
+        alert('Nenhum módulo disponível ainda!');
         return;
     }
 
     const modal = document.getElementById('materiaModal');
     const content = document.getElementById('materiaContent');
 
-    // Montar conteúdo do modal
+    // Montar conteúdo do modal com módulos em cards
     let html = `
         <h2>📚 ${getMateriaName(materia)} - ${bimestre}º Bimestre</h2>
         <p style="color: var(--text-secondary); margin-bottom: 24px;">
-            ${resumos.length} tema${resumos.length > 1 ? 's' : ''} disponível${resumos.length > 1 ? 'eis' : ''}
+            ${modulos.length} módulo${modulos.length > 1 ? 's' : ''} disponível${modulos.length > 1 ? 'eis' : ''}
         </p>
-        <div class="resumos-list">
+        <div class="modulos-grid">
     `;
 
-    resumos.forEach((resumo, index) => {
+    modulos.forEach((modulo, index) => {
         html += `
-            <div class="resumo-item">
-                <div class="resumo-header">
-                    <span class="resumo-number">Tema ${index + 1}</span>
-                    <h3>${resumo.titulo}</h3>
-                </div>
-                <div class="resumo-content">
-                    ${formatMarkdown(resumo.conteudo)}
+            <div class="modulo-card">
+                <div class="modulo-icon">📘</div>
+                <h3 class="modulo-titulo">${modulo.titulo}</h3>
+                <p class="modulo-descricao">${modulo.descricao}</p>
+                <div class="modulo-acoes">
+                    <button class="btn-modulo btn-modulo-resumo" onclick="openResumo(${modulo.id})">
+                        <span>📝</span> ACESSAR RESUMO
+                    </button>
+                    <button class="btn-modulo btn-modulo-simulado" onclick="openSimuladoFromModulo(${modulo.id})">
+                        <span>📊</span> ACESSAR SIMULADO
+                    </button>
                 </div>
             </div>
         `;
     });
 
-    html += `</div><hr style="margin: 32px 0;">`;
-
-    // Adicionar simulados
-    const simulados = DB.getSimulados(materia, bimestre);
-
-    if (simulados.length > 0) {
-        html += `
-            <h2>📊 Simulados Disponíveis</h2>
-            <div class="simulados-list">
-        `;
-
-        simulados.forEach(simulado => {
-            html += `
-                <div class="simulado-card" onclick="startSimulado(${simulado.id})">
-                    <h4>${simulado.titulo}</h4>
-                    <p>15 questões • Nota de 0 a 10</p>
-                    <button class="btn btn-primary">Iniciar Simulado</button>
-                </div>
-            `;
-        });
-
-        html += `</div>`;
-    }
+    html += `</div>`;
 
     content.innerHTML = html;
     modal.classList.add('show');
+}
+
+function openResumo(moduloId) {
+    const modulos = DB.getAllModulos();
+    const modulo = modulos.find(m => m.id === moduloId);
+
+    if (!modulo || !modulo.resumo) {
+        alert('Resumo não disponível!');
+        return;
+    }
+
+    const modal = document.getElementById('resumoModal');
+    const content = document.getElementById('resumoContent');
+
+    let html = `
+        <h2>${modulo.titulo}</h2>
+        <div class="resumo-content">
+            ${formatMarkdown(modulo.resumo)}
+        </div>
+    `;
+
+    content.innerHTML = html;
+    modal.classList.add('show');
+}
+
+function closeResumoModal() {
+    const modal = document.getElementById('resumoModal');
+    modal.classList.remove('show');
+}
+
+function openSimuladoFromModulo(moduloId) {
+    const modulos = DB.getAllModulos();
+    const modulo = modulos.find(m => m.id === moduloId);
+
+    if (!modulo || !modulo.simulado) {
+        alert('Simulado não disponível!');
+        return;
+    }
+
+    const currentUser = DB.getCurrentUser();
+
+    // Verificar limite de simulados por plano
+    const userResults = DB.getUserResults(currentUser.id);
+    const simuladosThisBimestre = userResults.filter(r =>
+        r.bimestre === modulo.bimestre &&
+        new Date(r.date).getMonth() === new Date().getMonth()
+    );
+
+    if (currentUser.plan === 'gratis' && simuladosThisBimestre.length >= 1) {
+        alert('Você atingiu o limite de simulados do plano gratuito!\nFaça upgrade para ter acesso ilimitado.');
+        return;
+    }
+
+    if (currentUser.plan === 'basico' && simuladosThisBimestre.length >= 4) {
+        alert('Você atingiu o limite de 4 simulados por bimestre do plano básico!\nFaça upgrade para Premium para ter acesso ilimitado.');
+        return;
+    }
+
+    openSimuladoModal(modulo);
 }
 
 function closeMateriaModal() {
@@ -147,21 +188,23 @@ function startSimulado(simuladoId) {
     openSimuladoModal(simulado);
 }
 
-function openSimuladoModal(simulado) {
+function openSimuladoModal(modulo) {
     const modal = document.getElementById('simuladoModal');
     const content = document.getElementById('simuladoContent');
 
+    const questoes = modulo.simulado.questoes;
+
     let html = `
-        <h2>${simulado.titulo}</h2>
+        <h2>Simulado: ${modulo.titulo}</h2>
         <div class="simulado-info">
-            <p><strong>Total de questões:</strong> 15</p>
+            <p><strong>Total de questões:</strong> ${questoes.length}</p>
             <p><strong>Pontuação:</strong> 5 fáceis (1pt), 5 médias (2pts), 5 difíceis (3pts)</p>
             <p><strong>Nota:</strong> 0 a 10</p>
         </div>
         <form id="simuladoForm">
     `;
 
-    simulado.questoes.forEach((questao, index) => {
+    questoes.forEach((questao, index) => {
         const dificuldade = questao.peso === 1 ? 'Fácil' : questao.peso === 2 ? 'Médio' : 'Difícil';
         const cor = questao.peso === 1 ? '#10b981' : questao.peso === 2 ? '#f59e0b' : '#ef4444';
 
@@ -201,18 +244,20 @@ function openSimuladoModal(simulado) {
     // Adicionar evento de submit
     document.getElementById('simuladoForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        finalizarSimulado(simulado);
+        finalizarSimulado(modulo);
     });
 }
 
-function finalizarSimulado(simulado) {
+function finalizarSimulado(modulo) {
     const form = document.getElementById('simuladoForm');
     const formData = new FormData(form);
 
     let pontuacaoTotal = 0;
     let acertos = 0;
 
-    simulado.questoes.forEach((questao, index) => {
+    const questoes = modulo.simulado.questoes;
+
+    questoes.forEach((questao, index) => {
         const resposta = parseInt(formData.get(`questao${index}`));
         if (resposta === questao.respostaCorreta) {
             pontuacaoTotal += questao.peso;
@@ -228,18 +273,18 @@ function finalizarSimulado(simulado) {
     const currentUser = DB.getCurrentUser();
     DB.saveResult({
         userId: currentUser.id,
-        simuladoId: simulado.id,
-        materia: simulado.materia,
-        bimestre: simulado.bimestre,
+        moduloId: modulo.id,
+        materia: modulo.materia,
+        bimestre: modulo.bimestre,
         nota: parseFloat(nota),
         acertos: acertos,
-        totalQuestoes: simulado.questoes.length,
+        totalQuestoes: questoes.length,
         pontuacao: pontuacaoTotal
     });
 
     // Mostrar resultado
     closeSimuladoModal();
-    alert(`Simulado Finalizado!\n\nAcertos: ${acertos}/15\nPontuação: ${pontuacaoTotal}/30\nNota: ${nota}/10`);
+    alert(`Simulado Finalizado!\n\nAcertos: ${acertos}/${questoes.length}\nPontuação: ${pontuacaoTotal}/30\nNota: ${nota}/10`);
 
     location.reload();
 }
@@ -291,40 +336,116 @@ function logout() {
     }
 }
 
-// CSS adicional para simulados
+// CSS adicional para módulos e simulados
 const style = document.createElement('style');
 style.textContent = `
-    .resumo-item {
-        margin-bottom: 32px;
+    /* Grid de módulos */
+    .modulos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 24px;
+        margin-top: 24px;
+    }
+
+    /* Card de módulo */
+    .modulo-card {
+        background: white;
+        border: 2px solid var(--border-color);
+        border-radius: 16px;
         padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: all 0.3s;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .modulo-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        border-color: var(--primary-color);
+    }
+
+    .modulo-icon {
+        font-size: 48px;
+        margin-bottom: 16px;
         background: var(--light-bg);
-        border-radius: 12px;
-        border-left: 4px solid var(--primary-color);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
-    .resumo-header {
+    .modulo-titulo {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .modulo-descricao {
+        font-size: 14px;
+        color: var(--text-secondary);
         margin-bottom: 20px;
+        line-height: 1.5;
     }
 
-    .resumo-number {
-        display: inline-block;
-        background: var(--primary-color);
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 12px;
+    .modulo-acoes {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-modulo {
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        border-radius: 8px;
         font-weight: 600;
-        margin-bottom: 8px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-style: italic;
     }
 
-    .resumo-header h3 {
-        margin-top: 8px;
-        color: var(--primary-color);
-        font-size: 24px;
+    .btn-modulo span {
+        font-size: 16px;
+        font-style: normal;
     }
 
+    .btn-modulo-resumo {
+        background: #7c3aed;
+        color: white;
+    }
+
+    .btn-modulo-resumo:hover {
+        background: #6d28d9;
+        transform: scale(1.02);
+    }
+
+    .btn-modulo-simulado {
+        background: #a3e635;
+        color: #1a1a1a;
+    }
+
+    .btn-modulo-simulado:hover {
+        background: #84cc16;
+        transform: scale(1.02);
+    }
+
+    /* Resumo content */
     .resumo-content {
         line-height: 1.8;
+        padding: 20px;
     }
 
     .resumo-content h2 {
@@ -339,23 +460,10 @@ style.textContent = `
         margin-bottom: 8px;
     }
 
-    .simulados-list {
-        display: grid;
-        gap: 16px;
-    }
-
-    .simulado-card {
-        padding: 24px;
-        background: var(--light-bg);
-        border-radius: 12px;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-
-    .simulado-card:hover {
-        background: var(--primary-color);
-        color: white;
-        transform: translateY(-4px);
+    .resumo-content h4 {
+        color: var(--text-primary);
+        margin-top: 12px;
+        margin-bottom: 8px;
     }
 
     .simulado-info {
