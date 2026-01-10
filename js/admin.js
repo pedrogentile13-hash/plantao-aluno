@@ -36,6 +36,7 @@ function initAdmin() {
 
     // Inicializar formulários
     initForms();
+    initModuloForm();
 }
 
 function updateGeneralStats() {
@@ -546,41 +547,180 @@ function logout() {
     }
 }
 
-// CSS adicional para admin
 // GERENCIAR MÓDULOS
+let moduloQuestionCount = 0;
+
 function loadModulos() {
     const modulos = DB.getAllModulos();
     const modulosContainer = document.getElementById('modulosList');
+    const selectModulo = document.getElementById('selectModulo');
 
-    if (!modulosContainer) return;
+    if (!modulosContainer || !selectModulo) return;
 
+    // Atualizar lista de módulos
     if (modulos.length === 0) {
         modulosContainer.innerHTML = '<p style="color: var(--text-secondary)">Nenhum módulo criado ainda.</p>';
+    } else {
+        let html = '<ul style="list-style: none; padding: 0;">';
+        modulos.forEach(modulo => {
+            html += `
+                <li style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--light-bg); border-radius: 8px; margin-bottom: 8px;">
+                    <div>
+                        <strong>${modulo.titulo}</strong><br>
+                        <small>${getMateriaName(modulo.materia)} - ${modulo.bimestre}º Bimestre</small><br>
+                        <small style="color: var(--text-secondary)">${modulo.descricao}</small>
+                    </div>
+                    <button class="btn btn-small btn-primary" onclick="selectModuloById(${modulo.id})">✏️ Editar</button>
+                </li>
+            `;
+        });
+        html += '</ul>';
+        modulosContainer.innerHTML = html;
+    }
+
+    // Atualizar dropdown de seleção
+    let selectHTML = '<option value="">-- Criar Novo Módulo --</option>';
+    modulos.forEach(modulo => {
+        selectHTML += `<option value="${modulo.id}">${modulo.titulo} (${getMateriaName(modulo.materia)} - ${modulo.bimestre}º)</option>`;
+    });
+    selectModulo.innerHTML = selectHTML;
+}
+
+function selectModuloById(moduloId) {
+    const selectModulo = document.getElementById('selectModulo');
+    selectModulo.value = moduloId;
+    loadModuloForEdit();
+}
+
+function loadModuloForEdit() {
+    const selectModulo = document.getElementById('selectModulo');
+    const moduloId = parseInt(selectModulo.value);
+
+    if (!moduloId) {
+        clearModuloForm();
         return;
     }
 
-    let html = '<ul style="list-style: none; padding: 0;">';
-    modulos.forEach(modulo => {
-        html += `
-            <li style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: var(--light-bg); border-radius: 8px; margin-bottom: 8px;">
-                <div>
-                    <strong>${modulo.titulo}</strong><br>
-                    <small>${getMateriaName(modulo.materia)} - ${modulo.bimestre}º Bimestre</small><br>
-                    <small style="color: var(--text-secondary)">${modulo.descricao}</small>
-                </div>
-                <div style="display: flex; gap: 8px;">
-                    <button class="btn btn-small btn-primary" onclick="editModulo(${modulo.id})">✏️ Editar</button>
-                    <button class="btn btn-small btn-danger" onclick="deleteModulo(${modulo.id})">🗑️ Excluir</button>
-                </div>
-            </li>
-        `;
-    });
-    html += '</ul>';
+    const modulos = DB.getAllModulos();
+    const modulo = modulos.find(m => m.id === moduloId);
 
-    modulosContainer.innerHTML = html;
+    if (!modulo) {
+        alert('Módulo não encontrado!');
+        clearModuloForm();
+        return;
+    }
+
+    // Preencher formulário
+    document.getElementById('moduloId').value = modulo.id;
+    document.getElementById('moduloMateria').value = modulo.materia;
+    document.getElementById('moduloBimestre').value = modulo.bimestre;
+    document.getElementById('moduloTitulo').value = modulo.titulo;
+    document.getElementById('moduloDescricao').value = modulo.descricao;
+    document.getElementById('moduloResumo').value = modulo.resumo;
+
+    // Limpar questões existentes
+    const container = document.getElementById('moduloQuestoesContainer');
+    container.innerHTML = '';
+    moduloQuestionCount = 0;
+
+    // Carregar questões do simulado
+    if (modulo.simulado && modulo.simulado.questoes) {
+        modulo.simulado.questoes.forEach((questao, index) => {
+            addModuloQuestion(questao);
+        });
+    }
+
+    // Mostrar botão de excluir
+    document.getElementById('deleteModuloBtn').style.display = 'block';
+    document.getElementById('saveModuloBtn').textContent = '💾 Atualizar Módulo';
 }
 
-function editModulo(moduloId) {
+function clearModuloForm() {
+    document.getElementById('moduloForm').reset();
+    document.getElementById('moduloId').value = '';
+    document.getElementById('selectModulo').value = '';
+
+    const container = document.getElementById('moduloQuestoesContainer');
+    container.innerHTML = '<p class="form-hint">Adicione 15 questões (5 fáceis, 5 médias, 5 difíceis)</p>';
+    moduloQuestionCount = 0;
+
+    document.getElementById('deleteModuloBtn').style.display = 'none';
+    document.getElementById('saveModuloBtn').textContent = '💾 Salvar Módulo';
+}
+
+function addModuloQuestion(questaoData = null) {
+    moduloQuestionCount++;
+    const container = document.getElementById('moduloQuestoesContainer');
+
+    // Remover hint se existir
+    const hint = container.querySelector('.form-hint');
+    if (hint) hint.remove();
+
+    const questionCard = document.createElement('div');
+    questionCard.className = 'questao-form-card';
+    questionCard.innerHTML = `
+        <div class="questao-form-header">
+            <h5>Questão ${moduloQuestionCount}</h5>
+            <button type="button" class="btn btn-danger" onclick="removeModuloQuestion(this)">Remover</button>
+        </div>
+        <div class="form-group">
+            <label>Dificuldade</label>
+            <select name="peso${moduloQuestionCount}" required>
+                <option value="1" ${questaoData && questaoData.peso === 1 ? 'selected' : ''}>Fácil (1 ponto)</option>
+                <option value="2" ${questaoData && questaoData.peso === 2 ? 'selected' : ''}>Médio (2 pontos)</option>
+                <option value="3" ${questaoData && questaoData.peso === 3 ? 'selected' : ''}>Difícil (3 pontos)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Enunciado</label>
+            <textarea name="enunciado${moduloQuestionCount}" rows="3" required>${questaoData ? questaoData.enunciado : ''}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Alternativa A</label>
+            <input type="text" name="alt1${moduloQuestionCount}" required value="${questaoData && questaoData.alternativas ? questaoData.alternativas[0] : ''}">
+        </div>
+        <div class="form-group">
+            <label>Alternativa B</label>
+            <input type="text" name="alt2${moduloQuestionCount}" required value="${questaoData && questaoData.alternativas ? questaoData.alternativas[1] : ''}">
+        </div>
+        <div class="form-group">
+            <label>Alternativa C</label>
+            <input type="text" name="alt3${moduloQuestionCount}" required value="${questaoData && questaoData.alternativas ? questaoData.alternativas[2] : ''}">
+        </div>
+        <div class="form-group">
+            <label>Alternativa D</label>
+            <input type="text" name="alt4${moduloQuestionCount}" required value="${questaoData && questaoData.alternativas ? questaoData.alternativas[3] : ''}">
+        </div>
+        <div class="form-group">
+            <label>Resposta Correta</label>
+            <select name="correta${moduloQuestionCount}" required>
+                <option value="0" ${questaoData && questaoData.respostaCorreta === 0 ? 'selected' : ''}>A</option>
+                <option value="1" ${questaoData && questaoData.respostaCorreta === 1 ? 'selected' : ''}>B</option>
+                <option value="2" ${questaoData && questaoData.respostaCorreta === 2 ? 'selected' : ''}>C</option>
+                <option value="3" ${questaoData && questaoData.respostaCorreta === 3 ? 'selected' : ''}>D</option>
+            </select>
+        </div>
+    `;
+
+    container.appendChild(questionCard);
+}
+
+function removeModuloQuestion(button) {
+    button.closest('.questao-form-card').remove();
+    moduloQuestionCount--;
+
+    // Se não houver mais questões, mostrar hint
+    const container = document.getElementById('moduloQuestoesContainer');
+    if (container.children.length === 0) {
+        container.innerHTML = '<p class="form-hint">Adicione 15 questões (5 fáceis, 5 médias, 5 difíceis)</p>';
+        moduloQuestionCount = 0;
+    }
+}
+
+function deleteCurrentModulo() {
+    const moduloId = parseInt(document.getElementById('moduloId').value);
+    if (!moduloId) return;
+
     const modulos = DB.getAllModulos();
     const modulo = modulos.find(m => m.id === moduloId);
 
@@ -589,68 +729,89 @@ function editModulo(moduloId) {
         return;
     }
 
-    const titulo = prompt('Título do Módulo:', modulo.titulo);
-    if (!titulo) return;
-
-    const descricao = prompt('Descrição do Módulo:', modulo.descricao);
-    if (!descricao) return;
-
-    const resumo = prompt('Resumo (Markdown):', modulo.resumo);
-    if (!resumo) return;
-
-    DB.updateModulo(moduloId, {
-        titulo,
-        descricao,
-        resumo
-    });
-
-    alert('Módulo atualizado com sucesso!');
-    loadModulos();
-}
-
-function deleteModulo(moduloId) {
-    if (!confirm('Tem certeza que deseja excluir este módulo?')) return;
-
-    DB.deleteModulo(moduloId);
-    alert('Módulo excluído com sucesso!');
-    loadModulos();
-}
-
-function createModulo() {
-    const materia = prompt('Matéria (matematica, portugues, etc):');
-    if (!materia) return;
-
-    const bimestre = parseInt(prompt('Bimestre (1-4):'));
-    if (!bimestre || bimestre < 1 || bimestre > 4) {
-        alert('Bimestre inválido!');
+    if (!confirm(`Tem certeza que deseja excluir o módulo "${modulo.titulo}"?\n\nEsta ação não pode ser desfeita!`)) {
         return;
     }
 
-    const titulo = prompt('Título do Módulo (ex: FATORAÇÃO):');
-    if (!titulo) return;
-
-    const descricao = prompt('Descrição breve:');
-    if (!descricao) return;
-
-    const resumo = prompt('Resumo (Markdown):');
-    if (!resumo) return;
-
-    // Criar simulado vazio
-    const simulado = {
-        questoes: []
-    };
-
-    DB.addModulo({
-        materia,
-        bimestre,
-        titulo,
-        descricao,
-        resumo,
-        simulado
-    });
-
-    alert('Módulo criado! Agora você pode adicionar questões ao simulado.');
+    DB.deleteModulo(moduloId);
+    alert('✅ Módulo excluído com sucesso!');
+    clearModuloForm();
     loadModulos();
+}
+
+// Inicializar formulário de módulo
+function initModuloForm() {
+    const form = document.getElementById('moduloForm');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const moduloId = document.getElementById('moduloId').value;
+        const materia = document.getElementById('moduloMateria').value;
+        const bimestre = parseInt(document.getElementById('moduloBimestre').value);
+        const titulo = document.getElementById('moduloTitulo').value;
+        const descricao = document.getElementById('moduloDescricao').value;
+        const resumo = document.getElementById('moduloResumo').value;
+
+        // Coletar questões
+        const questoes = [];
+        const container = document.getElementById('moduloQuestoesContainer');
+        const questaoCards = container.querySelectorAll('.questao-form-card');
+
+        if (questaoCards.length !== 15) {
+            alert('É necessário adicionar exatamente 15 questões!\n(5 fáceis, 5 médias, 5 difíceis)');
+            return;
+        }
+
+        questaoCards.forEach(card => {
+            const questao = {
+                peso: parseInt(card.querySelector('[name^="peso"]').value),
+                enunciado: card.querySelector('[name^="enunciado"]').value,
+                alternativas: [
+                    card.querySelector('[name^="alt1"]').value,
+                    card.querySelector('[name^="alt2"]').value,
+                    card.querySelector('[name^="alt3"]').value,
+                    card.querySelector('[name^="alt4"]').value
+                ],
+                respostaCorreta: parseInt(card.querySelector('[name^="correta"]').value)
+            };
+            questoes.push(questao);
+        });
+
+        // Verificar distribuição
+        const pesos = questoes.map(q => q.peso);
+        const faceis = pesos.filter(p => p === 1).length;
+        const medias = pesos.filter(p => p === 2).length;
+        const dificeis = pesos.filter(p => p === 3).length;
+
+        if (faceis !== 5 || medias !== 5 || dificeis !== 5) {
+            alert('Distribuição incorreta!\nÉ necessário:\n- 5 questões fáceis (peso 1)\n- 5 questões médias (peso 2)\n- 5 questões difíceis (peso 3)');
+            return;
+        }
+
+        const moduloData = {
+            materia,
+            bimestre,
+            titulo,
+            descricao,
+            resumo,
+            simulado: { questoes }
+        };
+
+        if (moduloId) {
+            // Atualizar módulo existente
+            DB.updateModulo(parseInt(moduloId), moduloData);
+            alert('✅ Módulo atualizado com sucesso!');
+        } else {
+            // Criar novo módulo
+            DB.addModulo(moduloData);
+            alert('✅ Módulo criado com sucesso!');
+        }
+
+        clearModuloForm();
+        loadModulos();
+    });
 }
 
 const style = document.createElement('style');

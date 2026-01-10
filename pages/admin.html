@@ -256,8 +256,83 @@
                         <p style="color: var(--text-secondary); margin-bottom: 16px;">
                             Módulos são unidades de conteúdo que contêm um resumo e um simulado integrados.
                         </p>
-                        <button class="btn btn-primary" onclick="createModulo()">➕ Criar Novo Módulo</button>
-                        <div id="modulosList" style="margin-top: 20px;"></div>
+
+                        <!-- Seletor de Módulo -->
+                        <div class="modulo-selector">
+                            <div class="form-row">
+                                <div class="form-group" style="flex: 1;">
+                                    <label>Selecionar Módulo para Editar</label>
+                                    <select id="selectModulo" onchange="loadModuloForEdit()">
+                                        <option value="">-- Criar Novo Módulo --</option>
+                                    </select>
+                                </div>
+                                <div style="display: flex; align-items: flex-end; gap: 8px;">
+                                    <button class="btn btn-outline" onclick="clearModuloForm()">🆕 Novo</button>
+                                    <button class="btn btn-danger" id="deleteModuloBtn" onclick="deleteCurrentModulo()" style="display: none;">🗑️ Excluir</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Formulário de Módulo -->
+                        <form id="moduloForm" class="admin-form" style="margin-top: 24px;">
+                            <input type="hidden" id="moduloId" value="">
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Matéria</label>
+                                    <select id="moduloMateria" required>
+                                        <option value="matematica">Matemática</option>
+                                        <option value="geografia">Geografia</option>
+                                        <option value="historia">História</option>
+                                        <option value="portugues">Português</option>
+                                        <option value="fisica">Física</option>
+                                        <option value="quimica">Química</option>
+                                        <option value="biologia">Biologia</option>
+                                        <option value="ingles">Inglês</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bimestre</label>
+                                    <select id="moduloBimestre" required>
+                                        <option value="1">1º Bimestre</option>
+                                        <option value="2">2º Bimestre</option>
+                                        <option value="3">3º Bimestre</option>
+                                        <option value="4">4º Bimestre</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Título do Módulo</label>
+                                <input type="text" id="moduloTitulo" required placeholder="Ex: FATORAÇÃO">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Descrição Breve</label>
+                                <input type="text" id="moduloDescricao" required placeholder="Ex: Aprenda a fatorar expressões algébricas">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Resumo (Markdown)</label>
+                                <textarea id="moduloResumo" rows="10" required placeholder="Digite o conteúdo do resumo em Markdown...&#10;&#10;Exemplo:&#10;# Título&#10;## Subtítulo&#10;**Negrito** *Itálico*"></textarea>
+                            </div>
+
+                            <h4 style="margin-top: 24px; margin-bottom: 16px;">Simulado do Módulo</h4>
+                            <div id="moduloQuestoesContainer">
+                                <p class="form-hint">Adicione 15 questões (5 fáceis, 5 médias, 5 difíceis)</p>
+                            </div>
+
+                            <div style="display: flex; gap: 12px; margin-top: 16px;">
+                                <button type="button" class="btn btn-outline" onclick="addModuloQuestion()">+ Adicionar Questão</button>
+                                <button type="submit" class="btn btn-primary" id="saveModuloBtn">💾 Salvar Módulo</button>
+                            </div>
+                        </form>
+
+                        <!-- Lista de Módulos Existentes -->
+                        <div style="margin-top: 40px;">
+                            <h4>Módulos Cadastrados</h4>
+                            <div id="modulosList" style="margin-top: 16px;"></div>
+                        </div>
                     </div>
 
                     <!-- Excluir Conteúdo -->

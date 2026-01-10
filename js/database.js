@@ -1673,12 +1673,12 @@ Posição: geralmente ANTES do verbo principal
             resumos: [],
             simulados: [],
             unlockedMaterias: {
-                1: ['matematica'], // Bimestre 1 - apenas Matemática desbloqueada
-                2: [],
-                3: [],
-                4: []
+                1: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
+                2: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
+                3: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
+                4: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles']
             },
-            unlockedBimestres: [1] // Apenas 1º bimestre desbloqueado
+            unlockedBimestres: [1, 2, 3, 4] // Todos os bimestres desbloqueados
         };
         localStorage.setItem('plantaoaluno_content', JSON.stringify(defaultContent));
     },
