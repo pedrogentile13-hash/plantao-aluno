@@ -463,6 +463,1193 @@ Formas tridimensionais são objetos que possuem comprimento, largura e altura.
                             }
                         ]
                     }
+                },
+                {
+                    id: 4,
+                    materia: 'geografia',
+                    bimestre: 1,
+                    titulo: 'CARTOGRAFIA',
+                    descricao: 'Entenda mapas, coordenadas e escalas',
+                    resumo: `# Cartografia
+
+## O que é Cartografia?
+
+Cartografia é a ciência que estuda e produz mapas, representando a superfície terrestre em um plano.
+
+## Elementos de um Mapa
+
+### 1. Título
+Indica o tema do mapa (ex: Mapa Político do Brasil)
+
+### 2. Legenda
+Explica os símbolos e cores utilizados no mapa
+
+### 3. Escala
+Mostra a proporção entre o mapa e a realidade
+- **Escala numérica**: 1:100.000 (1 cm no mapa = 100.000 cm na realidade)
+- **Escala gráfica**: Representada por uma régua desenhada
+
+### 4. Rosa dos Ventos
+Indica os pontos cardeais (N, S, L, O) e colaterais (NE, NO, SE, SO)
+
+## Coordenadas Geográficas
+
+### Latitude
+- Distância em graus do Equador (0°)
+- Varia de 0° a 90° Norte ou Sul
+- Linhas horizontais (paralelos)
+
+### Longitude
+- Distância em graus do Meridiano de Greenwich (0°)
+- Varia de 0° a 180° Leste ou Oeste
+- Linhas verticais (meridianos)
+
+## Tipos de Mapas
+
+1. **Político**: Mostra divisões políticas (países, estados, cidades)
+2. **Físico**: Mostra relevo, rios, montanhas
+3. **Temático**: Mostra temas específicos (clima, população, economia)
+
+## Projeções Cartográficas
+
+Formas de representar a Terra esférica em um plano:
+- **Cilíndrica** (Mercator): distorce áreas próximas aos polos
+- **Cônica**: boa para médias latitudes
+- **Azimutal**: centrada em um ponto`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'O que é cartografia?',
+                                alternativas: ['Estudo dos astros', 'Ciência que produz mapas', 'Estudo do clima', 'Análise de populações'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual elemento do mapa explica os símbolos usados?',
+                                alternativas: ['Título', 'Escala', 'Legenda', 'Rosa dos ventos'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Latitude é medida a partir de qual referência?',
+                                alternativas: ['Polo Norte', 'Meridiano de Greenwich', 'Linha do Equador', 'Trópico de Capricórnio'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quantos pontos cardeais existem?',
+                                alternativas: ['2', '4', '6', '8'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Longitude é medida em relação a qual linha?',
+                                alternativas: ['Equador', 'Trópico de Câncer', 'Meridiano de Greenwich', 'Círculo Polar Ártico'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Em uma escala 1:50.000, 2 cm no mapa representam quantos metros na realidade?',
+                                alternativas: ['500 m', '1.000 m', '5.000 m', '10.000 m'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual a latitude máxima possível?',
+                                alternativas: ['45°', '90°', '180°', '360°'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Nordeste (NE) é um ponto:',
+                                alternativas: ['Cardinal', 'Colateral', 'Subcolateral', 'Principal'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual tipo de mapa mostra divisões de países e estados?',
+                                alternativas: ['Físico', 'Político', 'Climático', 'Econômico'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'As linhas de latitude são chamadas de:',
+                                alternativas: ['Meridianos', 'Paralelos', 'Coordenadas', 'Eixos'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Em uma escala 1:100.000, quantos quilômetros são representados por 5 cm?',
+                                alternativas: ['5 km', '10 km', '50 km', '100 km'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual projeção distorce as áreas próximas aos polos?',
+                                alternativas: ['Cônica', 'Azimutal', 'Cilíndrica (Mercator)', 'Plana'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Uma cidade está a 23°S de latitude. Ela está:',
+                                alternativas: ['No Hemisfério Norte', 'No Hemisfério Sul', 'Na Linha do Equador', 'No Polo Sul'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Brasília está aproximadamente a 15°S, 48°W. O que significa 48°W?',
+                                alternativas: ['Latitude sul', 'Longitude oeste', 'Altitude', 'Temperatura'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual elemento NÃO é obrigatório em um mapa?',
+                                alternativas: ['Título', 'Escala', 'Fotografia aérea', 'Legenda'],
+                                respostaCorreta: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 5,
+                    materia: 'historia',
+                    bimestre: 1,
+                    titulo: 'REVOLUÇÃO FRANCESA',
+                    descricao: 'A revolução que mudou o mundo',
+                    resumo: `# Revolução Francesa (1789-1799)
+
+## Contexto Histórico
+
+A França do século XVIII vivia sob uma monarquia absolutista com grande desigualdade social.
+
+## Sociedade Francesa (Antigo Regime)
+
+### Primeiro Estado: Clero
+- Padres, bispos e religiosos
+- Privilégios e isenção de impostos
+- Cerca de 0,5% da população
+
+### Segundo Estado: Nobreza
+- Aristocratas e proprietários de terras
+- Privilégios e isenção de impostos
+- Cerca de 1,5% da população
+
+### Terceiro Estado: Povo
+- Burguesia, camponeses, trabalhadores
+- Pagavam todos os impostos
+- Cerca de 98% da população
+- **Sem direitos políticos**
+
+## Causas da Revolução
+
+1. **Crise econômica**: Dívidas da monarquia
+2. **Fome**: Más colheitas e escassez de alimentos
+3. **Desigualdade**: Privilégios do clero e nobreza
+4. **Iluminismo**: Ideias de liberdade e igualdade
+5. **Exemplo americano**: Independência dos EUA (1776)
+
+## Principais Eventos
+
+### 1789: Início
+- **14 de julho**: Queda da Bastilha (prisão símbolo do absolutismo)
+- Declaração dos Direitos do Homem e do Cidadão
+
+### 1792: República
+- Fim da monarquia
+- Proclamação da República
+
+### 1793-1794: Terror
+- Governo radical de Robespierre
+- Guilhotina para opositores
+- Execução do rei Luís XVI e da rainha Maria Antonieta
+
+### 1799: Fim
+- Napoleão Bonaparte assume o poder (Golpe do 18 Brumário)
+
+## Lema da Revolução
+
+**Liberdade, Igualdade, Fraternidade**
+
+## Consequências
+
+- Fim do absolutismo na França
+- Influenciou revoluções em todo o mundo
+- Declaração de direitos humanos
+- Ascensão da burguesia
+- Código Napoleônico (leis)`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Em que ano começou a Revolução Francesa?',
+                                alternativas: ['1776', '1789', '1792', '1799'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual era o Primeiro Estado na França do Antigo Regime?',
+                                alternativas: ['Nobreza', 'Burguesia', 'Clero', 'Camponeses'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual o lema da Revolução Francesa?',
+                                alternativas: ['Paz, Amor e União', 'Liberdade, Igualdade, Fraternidade', 'Trabalho, Pátria, Família', 'Ordem e Progresso'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual prisão foi tomada em 14 de julho de 1789?',
+                                alternativas: ['Torre de Londres', 'Bastilha', 'Alcatraz', 'Versalhes'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quem assumiu o poder ao final da Revolução em 1799?',
+                                alternativas: ['Luís XVI', 'Robespierre', 'Napoleão Bonaparte', 'Maria Antonieta'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual era a porcentagem aproximada do Terceiro Estado?',
+                                alternativas: ['10%', '50%', '75%', '98%'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'O que foi declarado em 1789 sobre direitos?',
+                                alternativas: ['Declaração de Independência', 'Declaração dos Direitos do Homem e do Cidadão', 'Carta Magna', 'Constituição Federal'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual período ficou conhecido como "Terror"?',
+                                alternativas: ['1789-1790', '1791-1792', '1793-1794', '1798-1799'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Quem liderou o período do Terror?',
+                                alternativas: ['Napoleão', 'Luís XVI', 'Robespierre', 'Voltaire'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual corrente de pensamento influenciou a Revolução?',
+                                alternativas: ['Feudalismo', 'Mercantilismo', 'Iluminismo', 'Romantismo'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual rei foi executado durante a Revolução?',
+                                alternativas: ['Luís XIV', 'Luís XV', 'Luís XVI', 'Carlos X'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual revolução serviu de exemplo para os franceses?',
+                                alternativas: ['Revolução Russa', 'Independência dos EUA', 'Revolução Industrial', 'Revolução Chinesa'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual instrumento foi usado para executar nobres e opositores?',
+                                alternativas: ['Forca', 'Guilhotina', 'Fuzilamento', 'Fogueira'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Em que ano a monarquia francesa foi abolida?',
+                                alternativas: ['1789', '1791', '1792', '1794'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Quem NÃO pertencia ao Terceiro Estado?',
+                                alternativas: ['Burgueses', 'Camponeses', 'Artesãos', 'Nobres'],
+                                respostaCorreta: 3
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 6,
+                    materia: 'portugues',
+                    bimestre: 1,
+                    titulo: 'CLASSES GRAMATICAIS',
+                    descricao: 'Substantivos, verbos, adjetivos e mais',
+                    resumo: `# Classes Gramaticais
+
+## O que são Classes Gramaticais?
+
+São categorias que agrupam palavras de acordo com sua função na frase.
+
+## 10 Classes Gramaticais
+
+### 1. Substantivo
+**Nomeia** seres, lugares, sentimentos, qualidades
+- Exemplos: casa, João, amor, beleza
+- Tipos: próprio, comum, concreto, abstrato
+
+### 2. Artigo
+**Define ou indefine** o substantivo
+- Definidos: o, a, os, as
+- Indefinidos: um, uma, uns, umas
+
+### 3. Adjetivo
+**Qualifica** ou caracteriza o substantivo
+- Exemplos: bonito, inteligente, azul, grande
+
+### 4. Numeral
+**Indica quantidade** ou ordem
+- Cardinais: um, dois, três
+- Ordinais: primeiro, segundo, terceiro
+
+### 5. Pronome
+**Substitui ou acompanha** o substantivo
+- Pessoais: eu, tu, ele, nós, vós, eles
+- Possessivos: meu, teu, seu, nosso
+- Demonstrativos: este, esse, aquele
+
+### 6. Verbo
+**Indica ação, estado ou fenômeno**
+- Exemplos: correr, ser, chover
+- Flexões: tempo, modo, pessoa, número
+
+### 7. Advérbio
+**Modifica** verbo, adjetivo ou outro advérbio
+- Lugar: aqui, ali, perto
+- Tempo: hoje, ontem, sempre
+- Modo: bem, mal, assim
+- Intensidade: muito, pouco, bastante
+
+### 8. Preposição
+**Liga** palavras estabelecendo relação
+- Exemplos: a, de, em, para, por, com, sem
+
+### 9. Conjunção
+**Liga** orações ou palavras
+- Coordenativas: e, mas, ou, porém
+- Subordinativas: que, se, quando, porque
+
+### 10. Interjeição
+**Expressa emoção**
+- Exemplos: Ah! Oba! Ui! Socorro!
+
+## Como Identificar?
+
+1. **Substantivo**: pode vir após artigo (o amor, a casa)
+2. **Verbo**: indica ação ou estado (ele corre, ela é)
+3. **Adjetivo**: caracteriza (casa bonita)
+4. **Advérbio**: modifica verbo (corre rapidamente)`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Qual palavra é um substantivo?',
+                                alternativas: ['Correr', 'Bonito', 'Casa', 'Muito'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual classe gramatical qualifica o substantivo?',
+                                alternativas: ['Verbo', 'Adjetivo', 'Advérbio', 'Pronome'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'A palavra "rapidamente" é um:',
+                                alternativas: ['Substantivo', 'Verbo', 'Adjetivo', 'Advérbio'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quantas classes gramaticais existem?',
+                                alternativas: ['5', '8', '10', '12'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual palavra é um artigo definido?',
+                                alternativas: ['um', 'uma', 'o', 'uns'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Na frase "O cachorro preto corre rápido", qual é o adjetivo?',
+                                alternativas: ['cachorro', 'preto', 'corre', 'rápido'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Na frase "Ele mora em São Paulo", qual é a preposição?',
+                                alternativas: ['Ele', 'mora', 'em', 'São Paulo'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual é a função do pronome?',
+                                alternativas: ['Qualificar', 'Substituir ou acompanhar o substantivo', 'Ligar palavras', 'Indicar ação'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: '"Meu" e "nosso" são pronomes:',
+                                alternativas: ['Pessoais', 'Possessivos', 'Demonstrativos', 'Indefinidos'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual palavra expressa emoção?',
+                                alternativas: ['Verbo', 'Substantivo', 'Interjeição', 'Conjunção'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Na frase "João e Maria estudam muito", qual é a conjunção?',
+                                alternativas: ['João', 'e', 'estudam', 'muito'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: '"Primeiro, segundo, terceiro" são numerais:',
+                                alternativas: ['Cardinais', 'Ordinais', 'Multiplicativos', 'Fracionários'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual frase contém um advérbio de tempo?',
+                                alternativas: ['Ele mora aqui', 'Ela chegou ontem', 'Corremos rapidamente', 'João é muito alto'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Substantivo abstrato nomeia:',
+                                alternativas: ['Objetos concretos', 'Sentimentos e qualidades', 'Pessoas específicas', 'Lugares'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Na frase "A menina bonita canta bem", quantos adjetivos há?',
+                                alternativas: ['0', '1', '2', '3'],
+                                respostaCorreta: 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 7,
+                    materia: 'fisica',
+                    bimestre: 1,
+                    titulo: 'CINEMÁTICA - MOVIMENTO',
+                    descricao: 'Estudo do movimento dos corpos',
+                    resumo: `# Cinemática - Movimento
+
+## O que é Cinemática?
+
+Parte da Física que estuda o **movimento** dos corpos sem se preocupar com suas causas.
+
+## Conceitos Fundamentais
+
+### Referencial
+Ponto de vista a partir do qual observamos o movimento
+- Exemplo: Você dentro de um ônibus está em repouso em relação ao ônibus, mas em movimento em relação à rua
+
+### Trajetória
+Caminho percorrido pelo corpo em movimento
+- Retilínea: linha reta
+- Curvilínea: curva
+
+### Posição (S)
+Local onde o corpo está em determinado instante
+- Medida em metros (m)
+
+### Deslocamento (ΔS)
+Variação da posição
+- ΔS = Sfinal - Sinicial
+
+### Velocidade (V)
+Rapidez com que o corpo muda de posição
+- **Velocidade Média**: Vm = ΔS / Δt
+- Unidades: m/s (metros por segundo) ou km/h
+
+## Movimento Uniforme (MU)
+
+Movimento com **velocidade constante**
+
+### Fórmula:
+S = S₀ + vt
+
+Onde:
+- S = posição final
+- S₀ = posição inicial
+- v = velocidade
+- t = tempo
+
+### Características:
+- Velocidade constante
+- Aceleração = 0
+- Gráfico v×t = linha horizontal
+
+## Conversão de Unidades
+
+### km/h para m/s: dividir por 3,6
+- 36 km/h = 36 ÷ 3,6 = 10 m/s
+
+### m/s para km/h: multiplicar por 3,6
+- 20 m/s = 20 × 3,6 = 72 km/h
+
+## Exemplos
+
+### Exemplo 1:
+Um carro percorre 100 km em 2 horas. Qual sua velocidade média?
+
+Vm = ΔS / Δt = 100 km / 2 h = **50 km/h**
+
+### Exemplo 2:
+Um móvel parte da posição 5 m com velocidade 2 m/s. Onde estará após 10 segundos?
+
+S = S₀ + vt
+S = 5 + 2×10
+S = 5 + 20 = **25 m**`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Cinemática estuda:',
+                                alternativas: ['Causas do movimento', 'O movimento sem suas causas', 'Forças', 'Energia'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'A unidade de velocidade no SI é:',
+                                alternativas: ['km/h', 'm/s', 'cm/s', 'km/s'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'No Movimento Uniforme, a velocidade é:',
+                                alternativas: ['Crescente', 'Decrescente', 'Constante', 'Nula'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Deslocamento é:',
+                                alternativas: ['Posição inicial', 'Variação da posição', 'Tempo gasto', 'Velocidade'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Para converter km/h para m/s, devemos:',
+                                alternativas: ['Multiplicar por 3,6', 'Dividir por 3,6', 'Multiplicar por 10', 'Dividir por 10'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Um carro percorre 150 km em 3 horas. Sua velocidade média é:',
+                                alternativas: ['30 km/h', '45 km/h', '50 km/h', '60 km/h'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Converta 72 km/h para m/s:',
+                                alternativas: ['10 m/s', '15 m/s', '20 m/s', '25 m/s'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'A fórmula do Movimento Uniforme é:',
+                                alternativas: ['S = vt', 'S = S₀ + vt', 'V = S/t', 'V = at'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Um móvel está na posição 10 m e vai para 30 m. Seu deslocamento foi:',
+                                alternativas: ['10 m', '20 m', '30 m', '40 m'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'No MU, a aceleração vale:',
+                                alternativas: ['-1 m/s²', '0 m/s²', '1 m/s²', '10 m/s²'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Um móvel parte de S₀=5m com v=3m/s. Após 4s, sua posição será:',
+                                alternativas: ['12 m', '15 m', '17 m', '20 m'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Um atleta corre 400m em 50s. Sua velocidade média em m/s é:',
+                                alternativas: ['6 m/s', '7 m/s', '8 m/s', '9 m/s'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Converta 25 m/s para km/h:',
+                                alternativas: ['60 km/h', '70 km/h', '80 km/h', '90 km/h'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Um carro a 20 m/s percorre que distância em 10 segundos?',
+                                alternativas: ['100 m', '150 m', '200 m', '250 m'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Se S=10+2t, qual a velocidade do móvel?',
+                                alternativas: ['10 m/s', '2 m/s', '12 m/s', '8 m/s'],
+                                respostaCorreta: 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 8,
+                    materia: 'quimica',
+                    bimestre: 1,
+                    titulo: 'TABELA PERIÓDICA',
+                    descricao: 'Organização dos elementos químicos',
+                    resumo: `# Tabela Periódica
+
+## O que é?
+
+Organização dos **elementos químicos** por suas propriedades e características.
+
+## Histórico
+
+Criada por **Dmitri Mendeleev** (1869), organizando os elementos por massa atômica crescente.
+
+## Estrutura da Tabela
+
+### Períodos (Linhas Horizontais)
+- São 7 períodos
+- Indicam o número de camadas eletrônicas
+- Exemplo: Carbono está no 2º período → 2 camadas
+
+### Famílias ou Grupos (Colunas Verticais)
+- São 18 famílias
+- Elementos da mesma família têm propriedades semelhantes
+
+## Principais Famílias
+
+### Família 1: Metais Alcalinos
+- Li, Na, K, Rb, Cs, Fr
+- Muito reativos
+- Um elétron na camada de valência
+
+### Família 2: Metais Alcalino-Terrosos
+- Be, Mg, Ca, Sr, Ba, Ra
+- Dois elétrons na camada de valência
+
+### Família 17: Halogênios
+- F, Cl, Br, I, At
+- Muito reativos
+- 7 elétrons na camada de valência
+
+### Família 18: Gases Nobres
+- He, Ne, Ar, Kr, Xe, Rn
+- Muito estáveis (não reagem)
+- 8 elétrons na camada de valência (camada completa)
+
+## Classificação dos Elementos
+
+### Metais
+- Maioria dos elementos
+- Conduzem eletricidade e calor
+- Brilhosos, maleáveis, dúcteis
+- Exemplos: Fe, Cu, Au, Ag
+
+### Ametais (Não-metais)
+- Não conduzem bem eletricidade
+- Opacos, quebradiços
+- Exemplos: C, O, N, S, P
+
+### Semimetais (Metaloides)
+- Propriedades intermediárias
+- Exemplos: Si, Ge, As
+
+## Informações no Elemento
+
+Cada quadrado da tabela mostra:
+- **Símbolo**: C (Carbono)
+- **Número atômico** (Z): Número de prótons
+- **Massa atômica** (A): Prótons + Nêutrons
+
+### Exemplo: Carbono (C)
+- Z = 6 (6 prótons)
+- A = 12
+- Nêutrons = A - Z = 12 - 6 = 6`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Quem criou a Tabela Periódica?',
+                                alternativas: ['Albert Einstein', 'Isaac Newton', 'Dmitri Mendeleev', 'Marie Curie'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quantos períodos tem a Tabela Periódica?',
+                                alternativas: ['5', '6', '7', '8'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Os períodos indicam:',
+                                alternativas: ['Número de prótons', 'Número de camadas eletrônicas', 'Número de nêutrons', 'Massa atômica'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual família é conhecida como Gases Nobres?',
+                                alternativas: ['Família 1', 'Família 2', 'Família 17', 'Família 18'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'O símbolo do Carbono é:',
+                                alternativas: ['Ca', 'C', 'Co', 'Cr'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual característica dos Gases Nobres?',
+                                alternativas: ['Muito reativos', 'Muito estáveis', 'São metais', 'São líquidos'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Metais Alcalinos têm quantos elétrons na camada de valência?',
+                                alternativas: ['1', '2', '7', '8'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Cl (Cloro) pertence à família dos:',
+                                alternativas: ['Metais Alcalinos', 'Gases Nobres', 'Halogênios', 'Alcalino-Terrosos'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual NÃO é uma característica dos metais?',
+                                alternativas: ['Conduzem eletricidade', 'São brilhosos', 'São quebradiços', 'São maleáveis'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'O número atômico (Z) indica:',
+                                alternativas: ['Número de nêutrons', 'Número de prótons', 'Massa atômica', 'Número de elétrons livres'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Um elemento com Z=6 e A=12 tem quantos nêutrons?',
+                                alternativas: ['6', '12', '18', '3'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual elemento é um ametal?',
+                                alternativas: ['Ferro (Fe)', 'Ouro (Au)', 'Oxigênio (O)', 'Prata (Ag)'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Silício (Si) é classificado como:',
+                                alternativas: ['Metal', 'Ametal', 'Semimetal', 'Gás nobre'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Na (Sódio) e K (Potássio) estão na mesma:',
+                                alternativas: ['Período', 'Família', 'Camada', 'Valência diferente'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Um elemento do 3º período tem quantas camadas eletrônicas?',
+                                alternativas: ['1', '2', '3', '4'],
+                                respostaCorreta: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 9,
+                    materia: 'biologia',
+                    bimestre: 1,
+                    titulo: 'CÉLULAS',
+                    descricao: 'A unidade básica da vida',
+                    resumo: `# Células - A Unidade da Vida
+
+## O que é uma Célula?
+
+A célula é a **menor unidade viva** dos seres vivos. Todo ser vivo é formado por células.
+
+## Teoria Celular
+
+1. Todos os seres vivos são formados por células
+2. A célula é a unidade básica da vida
+3. Toda célula vem de outra célula preexistente
+
+## Tipos de Células
+
+### Células Procariontes
+- **Mais simples**
+- SEM núcleo definido (material genético disperso)
+- Exemplo: Bactérias
+
+### Células Eucariontes
+- **Mais complexas**
+- COM núcleo definido (envolvido por membrana)
+- Exemplos: Animais, plantas, fungos
+
+## Partes da Célula Eucarionte
+
+### 1. Membrana Plasmática
+- Envolve a célula
+- Controla entrada e saída de substâncias
+- Permeabilidade seletiva
+
+### 2. Citoplasma
+- Região entre membrana e núcleo
+- Contém as organelas
+- Líquido gelatinoso
+
+### 3. Núcleo
+- Contém o DNA (material genético)
+- Controla as atividades celulares
+- Envolvido pela carioteca (membrana nuclear)
+
+## Principais Organelas
+
+### Mitocôndria
+- **Respiração celular**
+- Produz energia (ATP)
+- "Usina de energia"
+
+### Ribossomos
+- **Síntese de proteínas**
+- Produção de proteínas
+
+### Retículo Endoplasmático
+- Transporte de substâncias
+- RE liso e RE rugoso (com ribossomos)
+
+### Complexo de Golgi
+- Empacotamento e secreção
+- "Correios da célula"
+
+### Lisossomos
+- Digestão intracelular
+- Contém enzimas digestivas
+
+### Centríolos
+- Participam da divisão celular
+
+## Diferenças: Célula Animal × Vegetal
+
+### Exclusivas da Célula Vegetal:
+- **Parede celular** (celulose) - proteção
+- **Cloroplastos** - fotossíntese
+- **Vacúolo grande** - armazenamento
+
+### Exclusivas da Célula Animal:
+- **Centríolos** - divisão celular`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Qual a menor unidade viva dos seres vivos?',
+                                alternativas: ['Tecido', 'Órgão', 'Célula', 'Sistema'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Células que NÃO possuem núcleo definido são:',
+                                alternativas: ['Eucariontes', 'Procariontes', 'Vegetais', 'Animais'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Bactérias são células:',
+                                alternativas: ['Eucariontes', 'Procariontes', 'Vegetais', 'Animais'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual organela é chamada de "usina de energia"?',
+                                alternativas: ['Núcleo', 'Mitocôndria', 'Ribossomo', 'Lisossomo'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'A membrana plasmática:',
+                                alternativas: ['Contém o DNA', 'Produz energia', 'Controla entrada e saída de substâncias', 'Sintetiza proteínas'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual organela realiza a fotossíntese?',
+                                alternativas: ['Mitocôndria', 'Cloroplasto', 'Ribossomo', 'Núcleo'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Ribossomos são responsáveis por:',
+                                alternativas: ['Respiração celular', 'Síntese de proteínas', 'Fotossíntese', 'Divisão celular'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'O material genético (DNA) fica localizado no:',
+                                alternativas: ['Citoplasma', 'Membrana', 'Núcleo', 'Ribossomo'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual estrutura EXISTE em células vegetais e NÃO em animais?',
+                                alternativas: ['Núcleo', 'Mitocôndria', 'Parede celular', 'Membrana plasmática'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Lisossomos contêm:',
+                                alternativas: ['DNA', 'Enzimas digestivas', 'Clorofila', 'Ribossomos'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'O Complexo de Golgi é responsável por:',
+                                alternativas: ['Respiração', 'Fotossíntese', 'Empacotamento e secreção', 'Divisão celular'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Centríolos participam de qual processo?',
+                                alternativas: ['Respiração', 'Fotossíntese', 'Digestão', 'Divisão celular'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual característica NÃO pertence a células eucariontes?',
+                                alternativas: ['Núcleo definido', 'Mitocôndrias', 'DNA disperso no citoplasma', 'Organelas membranosas'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'A parede celular das plantas é composta principalmente de:',
+                                alternativas: ['Proteína', 'Celulose', 'DNA', 'Lipídios'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual NÃO é um princípio da Teoria Celular?',
+                                alternativas: ['Todos os seres vivos são formados por células', 'A célula é a unidade básica da vida', 'Células surgem espontaneamente', 'Toda célula vem de outra célula'],
+                                respostaCorreta: 2
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 10,
+                    materia: 'ingles',
+                    bimestre: 1,
+                    titulo: 'SIMPLE PRESENT',
+                    descricao: 'Presente simples em inglês',
+                    resumo: `# Simple Present
+
+## O que é?
+
+Tempo verbal usado para expressar **ações habituais, verdades universais e fatos**.
+
+## Estrutura
+
+### Afirmativa
+**Sujeito + Verbo (base)**
+
+- I play (Eu jogo)
+- You play (Você joga)
+- We play (Nós jogamos)
+- They play (Eles jogam)
+
+**3ª pessoa singular (He/She/It) → Verbo + S/ES**
+
+- He play**s** (Ele joga)
+- She work**s** (Ela trabalha)
+- It rain**s** (Chove)
+
+### Negativa
+**Sujeito + DO/DOES + NOT + Verbo (base)**
+
+- I **do not** (don't) play
+- You **do not** (don't) play
+- He/She/It **does not** (doesn't) play
+- We **do not** (don't) play
+- They **do not** (don't) play
+
+### Interrogativa
+**DO/DOES + Sujeito + Verbo (base)?**
+
+- **Do** I play?
+- **Do** you play?
+- **Does** he/she/it play?
+- **Do** we play?
+- **Do** they play?
+
+## Regras do S/ES (3ª pessoa)
+
+### Adicionar S
+- work → work**s**
+- play → play**s**
+- eat → eat**s**
+
+### Adicionar ES
+Verbos terminados em: **-s, -sh, -ch, -x, -o, -z**
+- watch → watch**es**
+- go → go**es**
+- fix → fix**es**
+- wash → wash**es**
+
+### Y → IES
+Verbos terminados em consoante + Y
+- study → stud**ies**
+- fly → fl**ies**
+
+## Usos do Simple Present
+
+1. **Ações habituais/rotinas**
+   - I wake up at 7 AM. (Eu acordo às 7h)
+   - She studies English every day. (Ela estuda inglês todo dia)
+
+2. **Verdades universais**
+   - The sun rises in the east. (O sol nasce no leste)
+   - Water boils at 100°C. (A água ferve a 100°C)
+
+3. **Fatos**
+   - He lives in Brazil. (Ele mora no Brasil)
+   - They speak Portuguese. (Eles falam português)
+
+## Advérbios de Frequência
+
+Indicam com que frequência fazemos algo:
+- **Always** (sempre)
+- **Usually** (geralmente)
+- **Often** (frequentemente)
+- **Sometimes** (às vezes)
+- **Rarely** (raramente)
+- **Never** (nunca)
+
+Posição: geralmente ANTES do verbo principal
+- I **always** wake up early.
+- She **never** eats meat.
+
+## Exemplos
+
+✅ I **work** every day.
+✅ He **works** every day.
+✅ She **doesn't** like coffee.
+✅ **Does** he play soccer?
+✅ They **don't** live here.`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Qual a forma correta de "play" na 3ª pessoa do singular?',
+                                alternativas: ['play', 'plays', 'playes', 'playing'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Complete: She _____ English.',
+                                alternativas: ['speak', 'speaks', 'speaking', 'speakes'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual o auxiliar usado na negativa com "he"?',
+                                alternativas: ['do not', 'does not', 'did not', 'is not'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Complete: I _____ like pizza. (negativa)',
+                                alternativas: ['not', 'doesn\'t', 'don\'t', 'am not'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual palavra significa "sempre"?',
+                                alternativas: ['Never', 'Sometimes', 'Always', 'Rarely'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Complete: He _____ to school every day.',
+                                alternativas: ['go', 'goes', 'going', 'gos'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual frase está CORRETA?',
+                                alternativas: ['She don\'t like tea', 'She doesn\'t likes tea', 'She doesn\'t like tea', 'She not like tea'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Complete: _____ you speak English?',
+                                alternativas: ['Do', 'Does', 'Are', 'Is'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'O verbo "study" na 3ª pessoa fica:',
+                                alternativas: ['studys', 'studies', 'studyes', 'studie'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Complete: They _____ in New York. (morar)',
+                                alternativas: ['lives', 'live', 'living', 'lifes'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual frase está na interrogativa CORRETA?',
+                                alternativas: ['Does she plays soccer?', 'Do she play soccer?', 'Does she play soccer?', 'Do she plays soccer?'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'O verbo "watch" na 3ª pessoa fica:',
+                                alternativas: ['watchs', 'watches', 'watchies', 'watch'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Complete: He _____ (not/work) on Sundays.',
+                                alternativas: ['don\'t work', 'doesn\'t works', 'doesn\'t work', 'not work'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Onde geralmente colocamos advérbios de frequência?',
+                                alternativas: ['No final da frase', 'Antes do verbo principal', 'Depois do verbo principal', 'No início da frase sempre'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual frase usa Simple Present para verdade universal?',
+                                alternativas: ['I am eating', 'She played yesterday', 'The Earth orbits the Sun', 'They will travel'],
+                                respostaCorreta: 2
+                            }
+                        ]
+                    }
                 }
             ],
             videoaulas: [
