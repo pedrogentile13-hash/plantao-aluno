@@ -18,6 +18,9 @@ function initResumos() {
         document.getElementById('adminLink').style.display = 'flex';
     }
 
+    // Inicializar filtro de ano escolar
+    initAnoFilter(currentUser.schoolYear);
+
     // Inicializar tabs de bimestres
     const content = DB.getContent();
     const tabs = document.querySelectorAll('.bimestre-tab');
@@ -404,6 +407,33 @@ function formatMarkdown(text) {
         .replace(/\*(.*?)\*/g, '<em>$1</em>')
         .replace(/\n\n/g, '</p><p>')
         .replace(/\n/g, '<br>');
+}
+
+function initAnoFilter(currentSchoolYear) {
+    const anoButtons = document.querySelectorAll('.ano-btn');
+
+    // Marcar o ano atual do usuário como ativo
+    anoButtons.forEach(btn => {
+        const ano = btn.dataset.ano;
+        if (ano === currentSchoolYear) {
+            btn.classList.add('active');
+        }
+
+        // Adicionar evento de click
+        btn.addEventListener('click', () => {
+            // Atualizar botões ativos
+            anoButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Atualizar ano escolar do usuário
+            const currentUser = DB.getCurrentUser();
+            currentUser.schoolYear = ano;
+            DB.updateUser(currentUser);
+
+            // Recarregar conteúdo com filtro aplicado
+            location.reload();
+        });
+    });
 }
 
 function logout() {

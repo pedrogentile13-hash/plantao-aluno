@@ -643,6 +643,55 @@ body {
     margin-bottom: 12px;
 }
 
+/* Filtro de Ano Escolar */
+.ano-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.filter-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+.ano-toggle {
+    display: flex;
+    gap: 8px;
+    background: var(--light-bg);
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.ano-btn {
+    padding: 10px 24px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.ano-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+.ano-btn:hover:not(.active) {
+    background: white;
+}
+
 /* Bimestre Tabs */
 .bimestre-tabs {
     display: flex;

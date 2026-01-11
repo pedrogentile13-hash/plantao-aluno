@@ -22,6 +22,9 @@ function initVideoaulas() {
     if (currentUser.plan !== 'premium') {
         document.getElementById('premiumRequired').style.display = 'block';
         document.getElementById('videoaulasContent').style.display = 'none';
+    } else {
+        // Inicializar filtro de ano escolar
+        initAnoFilter(currentUser.schoolYear);
     }
 }
 
@@ -125,6 +128,33 @@ function getPlanName(plan) {
         'premium': 'Premium'
     };
     return plans[plan] || 'Grátis';
+}
+
+function initAnoFilter(currentSchoolYear) {
+    const anoButtons = document.querySelectorAll('.ano-btn');
+
+    // Marcar o ano atual do usuário como ativo
+    anoButtons.forEach(btn => {
+        const ano = btn.dataset.ano;
+        if (ano === currentSchoolYear) {
+            btn.classList.add('active');
+        }
+
+        // Adicionar evento de click
+        btn.addEventListener('click', () => {
+            // Atualizar botões ativos
+            anoButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Atualizar ano escolar do usuário
+            const currentUser = DB.getCurrentUser();
+            currentUser.schoolYear = ano;
+            DB.updateUser(currentUser);
+
+            // Recarregar conteúdo com filtro aplicado
+            location.reload();
+        });
+    });
 }
 
 function logout() {

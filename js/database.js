@@ -22,6 +22,7 @@ const DB = {
                     id: 1,
                     materia: 'matematica',
                     bimestre: 1,
+                    schoolYear: '9',
                     titulo: 'FATORAÇÃO',
                     descricao: 'Tipos de Fatoração e Exemplos',
                     resumo: `# Fatoração
@@ -160,6 +161,7 @@ a² - 2ab + b² = (a - b)²
                     id: 2,
                     materia: 'matematica',
                     bimestre: 1,
+                    schoolYear: '9',
                     titulo: 'EXPRESSÃO DE 2o GRAU',
                     descricao: 'Aprenda a expressão.',
                     resumo: `# Equação de Segundo Grau
@@ -329,6 +331,7 @@ x = (4 ± 0) / 2 = 2
                     id: 3,
                     materia: 'matematica',
                     bimestre: 1,
+                    schoolYear: '8',
                     titulo: 'FORMAS 3D',
                     descricao: 'Aprenda as formas espaciais',
                     resumo: `# Formas 3D (Geometria Espacial)
@@ -468,6 +471,7 @@ Formas tridimensionais são objetos que possuem comprimento, largura e altura.
                     id: 4,
                     materia: 'geografia',
                     bimestre: 1,
+                    schoolYear: '8',
                     titulo: 'CARTOGRAFIA',
                     descricao: 'Entenda mapas, coordenadas e escalas',
                     resumo: `# Cartografia
@@ -1650,6 +1654,372 @@ Posição: geralmente ANTES do verbo principal
                             }
                         ]
                     }
+                },
+                // Módulos adicionais para 8º ano
+                {
+                    id: 6,
+                    materia: 'matematica',
+                    bimestre: 1,
+                    schoolYear: '8',
+                    titulo: 'POTENCIAÇÃO E RADICIAÇÃO',
+                    descricao: 'Aprenda sobre potências e raízes',
+                    resumo: `# Potenciação e Radiciação
+
+## Potenciação
+
+A potenciação é uma multiplicação repetida do mesmo número.
+
+**Notação:** aⁿ = a × a × a × ... (n vezes)
+
+- **a** = base
+- **n** = expoente
+- **aⁿ** = potência
+
+### Exemplos:
+- 2³ = 2 × 2 × 2 = 8
+- 5² = 5 × 5 = 25
+- 10⁴ = 10 × 10 × 10 × 10 = 10.000
+
+### Propriedades Importantes:
+
+1. **Multiplicação de potências de mesma base:**
+   aᵐ × aⁿ = aᵐ⁺ⁿ
+   Exemplo: 2³ × 2² = 2⁵ = 32
+
+2. **Divisão de potências de mesma base:**
+   aᵐ ÷ aⁿ = aᵐ⁻ⁿ
+   Exemplo: 5⁴ ÷ 5² = 5² = 25
+
+3. **Potência de potência:**
+   (aᵐ)ⁿ = aᵐˣⁿ
+   Exemplo: (3²)³ = 3⁶ = 729
+
+4. **Expoente zero:**
+   a⁰ = 1 (para a ≠ 0)
+
+5. **Expoente negativo:**
+   a⁻ⁿ = 1/aⁿ
+   Exemplo: 2⁻³ = 1/2³ = 1/8
+
+## Radiciação
+
+A radiciação é a operação inversa da potenciação.
+
+**Notação:** ⁿ√a = b (b é a raiz n-ésima de a)
+
+- **n** = índice da raiz
+- **a** = radicando
+- **b** = raiz
+
+### Exemplos:
+- √25 = 5 (porque 5² = 25)
+- ³√8 = 2 (porque 2³ = 8)
+- ⁴√16 = 2 (porque 2⁴ = 16)
+
+### Propriedades:
+
+1. **Raiz de um produto:**
+   ⁿ√(a × b) = ⁿ√a × ⁿ√b
+
+2. **Raiz de um quociente:**
+   ⁿ√(a ÷ b) = ⁿ√a ÷ ⁿ√b
+
+3. **Raiz de raiz:**
+   ᵐ√(ⁿ√a) = ᵐˣⁿ√a
+
+## Exercícios de Fixação
+1. Calcule: 3⁴
+2. Calcule: 2⁵ × 2³
+3. Calcule: √144
+4. Calcule: ³√27
+
+## Respostas
+1. 81
+2. 2⁸ = 256
+3. 12
+4. 3`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Quanto é 2⁴?',
+                                alternativas: ['8', '12', '16', '24'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quanto é 5²?',
+                                alternativas: ['10', '15', '20', '25'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quanto é √36?',
+                                alternativas: ['4', '6', '8', '9'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quanto é 10³?',
+                                alternativas: ['30', '100', '300', '1000'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quanto é 3⁰?',
+                                alternativas: ['0', '1', '3', '9'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Calcule: 2³ × 2²',
+                                alternativas: ['2⁵', '2⁶', '4⁵', '4⁶'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Calcule: 5⁴ ÷ 5²',
+                                alternativas: ['5²', '5⁶', '25²', '25⁶'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Quanto é ³√64?',
+                                alternativas: ['2', '4', '6', '8'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Calcule: (2²)³',
+                                alternativas: ['2⁵', '2⁶', '4⁶', '8⁶'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Quanto é √100?',
+                                alternativas: ['5', '10', '20', '50'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Calcule: 2⁻³',
+                                alternativas: ['-6', '-8', '1/6', '1/8'],
+                                respostaCorreta: 3
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Calcule: (3²)² ÷ 3³',
+                                alternativas: ['3', '9', '27', '81'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Simplifique: ⁴√16',
+                                alternativas: ['2', '4', '8', '16'],
+                                respostaCorreta: 0
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Calcule: √(64 × 36)',
+                                alternativas: ['24', '36', '48', '100'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Quanto é (10²)³?',
+                                alternativas: ['10⁵', '10⁶', '100⁶', '1000⁶'],
+                                respostaCorreta: 1
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: 7,
+                    materia: 'portugues',
+                    bimestre: 1,
+                    schoolYear: '9',
+                    titulo: 'ORAÇÕES SUBORDINADAS',
+                    descricao: 'Entenda orações subordinadas e suas classificações',
+                    resumo: `# Orações Subordinadas
+
+## O que são?
+
+Orações subordinadas são aquelas que dependem de uma oração principal para ter sentido completo.
+
+## Tipos de Orações Subordinadas
+
+### 1. Orações Subordinadas Substantivas
+
+Funcionam como substantivo na frase.
+
+**Tipos:**
+
+- **Subjetiva**: funciona como sujeito
+  - É importante **que você estude**.
+
+- **Objetiva Direta**: funciona como objeto direto
+  - Espero **que você venha**.
+
+- **Objetiva Indireta**: funciona como objeto indireto
+  - Necessito **de que me ajude**.
+
+- **Completiva Nominal**: complementa um nome
+  - Tenho certeza **de que vai dar certo**.
+
+- **Predicativa**: funciona como predicativo
+  - O problema é **que não temos tempo**.
+
+- **Apositiva**: funciona como aposto
+  - Só quero uma coisa: **que seja feliz**.
+
+### 2. Orações Subordinadas Adjetivas
+
+Funcionam como adjetivo, caracterizando um substantivo.
+
+**Tipos:**
+
+- **Restritiva**: restringe o sentido (sem vírgula)
+  - Os alunos **que estudam** passam.
+
+- **Explicativa**: explica (com vírgula)
+  - Os alunos, **que estudam**, passam.
+
+### 3. Orações Subordinadas Adverbiais
+
+Funcionam como advérbio, indicando circunstância.
+
+**Tipos:**
+
+- **Causal**: indica causa (porque, pois, como)
+  - Fiquei feliz **porque passei**.
+
+- **Consecutiva**: indica consequência (que, tanto que)
+  - Estudei tanto **que passei**.
+
+- **Condicional**: indica condição (se, caso)
+  - **Se estudar**, passará.
+
+- **Temporal**: indica tempo (quando, enquanto)
+  - **Quando chegou**, todos saíram.
+
+- **Final**: indica finalidade (para que, a fim de que)
+  - Estudo **para que passe**.
+
+- **Comparativa**: indica comparação (como, mais que)
+  - Ele é alto **como o pai**.
+
+- **Conformativa**: indica conformidade (conforme, segundo)
+  - Fiz **conforme você pediu**.
+
+- **Concessiva**: indica concessão (embora, ainda que)
+  - **Embora estudasse**, não passou.
+
+- **Proporcional**: indica proporção (à medida que)
+  - **À medida que cresce**, amadurece.
+
+## Exercícios de Fixação
+1. Identifique o tipo: "Espero que você entenda."
+2. Identifique: "O livro que comprei é bom."
+3. Identifique: "Estudei porque queria passar."
+
+## Respostas
+1. Subordinada substantiva objetiva direta
+2. Subordinada adjetiva restritiva
+3. Subordinada adverbial causal`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'Orações subordinadas dependem de:',
+                                alternativas: ['Nada', 'Oração principal', 'Sujeito apenas', 'Predicado apenas'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quantos tipos principais de orações subordinadas existem?',
+                                alternativas: ['2', '3', '4', '5'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Em "Espero que você venha", a oração subordinada é:',
+                                alternativas: ['Adjetiva', 'Substantiva', 'Adverbial', 'Coordenada'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Orações adjetivas funcionam como:',
+                                alternativas: ['Substantivo', 'Adjetivo', 'Advérbio', 'Verbo'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual conjunção introduz oração causal?',
+                                alternativas: ['se', 'porque', 'quando', 'para que'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Em "Estudei tanto que passei", temos oração:',
+                                alternativas: ['Causal', 'Final', 'Consecutiva', 'Condicional'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Classifique: "É importante que você estude."',
+                                alternativas: ['Objetiva direta', 'Subjetiva', 'Predicativa', 'Apositiva'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Em "Se estudar, passará", temos oração:',
+                                alternativas: ['Temporal', 'Causal', 'Condicional', 'Final'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Orações adjetivas restritivas usam:',
+                                alternativas: ['Vírgula sempre', 'Nunca vírgula', 'Ponto e vírgula', 'Dois pontos'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Em "Embora estudasse, não passou", temos oração:',
+                                alternativas: ['Causal', 'Concessiva', 'Consecutiva', 'Condicional'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Classifique: "Tenho certeza de que vai dar certo."',
+                                alternativas: ['Objetiva direta', 'Objetiva indireta', 'Completiva nominal', 'Subjetiva'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Em "Os alunos, que estudam, passam", a oração é:',
+                                alternativas: ['Adjetiva restritiva', 'Adjetiva explicativa', 'Substantiva', 'Adverbial'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual oração indica finalidade?',
+                                alternativas: ['Causal', 'Consecutiva', 'Final', 'Temporal'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Em "Quando chegou, todos saíram", temos oração:',
+                                alternativas: ['Causal', 'Temporal', 'Condicional', 'Consecutiva'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Classifique: "O problema é que não temos tempo."',
+                                alternativas: ['Subjetiva', 'Objetiva direta', 'Predicativa', 'Completiva nominal'],
+                                respostaCorreta: 2
+                            }
+                        ]
+                    }
                 }
             ],
             videoaulas: [
@@ -1832,8 +2202,15 @@ Posição: geralmente ANTES do verbo principal
     // MODULOS
     getModulos(materia, bimestre) {
         const content = this.getContent();
+        const currentUser = this.getCurrentUser();
         if (!content.modulos) return [];
-        return content.modulos.filter(m => m.materia === materia && m.bimestre === bimestre);
+
+        // Filtrar por matéria, bimestre e ano escolar do usuário
+        return content.modulos.filter(m => {
+            const matchesMateriaBimestre = m.materia === materia && m.bimestre === bimestre;
+            const matchesSchoolYear = !m.schoolYear || m.schoolYear === currentUser.schoolYear;
+            return matchesMateriaBimestre && matchesSchoolYear;
+        });
     },
 
     getAllModulos() {
