@@ -18,14 +18,211 @@ const DB = {
     initDefaultContent() {
         const defaultContent = {
             modulos: [
+                // PORTUGUÊS - Comunicação (linguagem e sentido)
                 {
                     id: 1,
+                    materia: 'portugues',
+                    bimestre: 1,
+                    schoolYear: '9',
+                    titulo: 'LINGUAGEM E SENTIDO',
+                    descricao: 'Comunicação: linguagem e sentido',
+                    resumo: `# Linguagem e Sentido
+
+## O que é Linguagem?
+
+Linguagem é o sistema de signos usado para comunicar ideias, pensamentos e emoções. É através da linguagem que nos comunicamos com o mundo.
+
+## Tipos de Linguagem
+
+### 1. Linguagem Verbal
+Usa palavras (orais ou escritas) para se comunicar.
+- **Oral**: conversas, palestras, apresentações
+- **Escrita**: textos, livros, mensagens
+
+### 2. Linguagem Não-Verbal
+Usa outros recursos além das palavras.
+- **Gestos**: acenos, sinais
+- **Imagens**: fotos, desenhos, placas
+- **Sons**: música, buzinas
+- **Expressões faciais**: sorrisos, caretas
+
+### 3. Linguagem Mista
+Combina linguagem verbal e não-verbal.
+Exemplo: história em quadrinhos, memes, posts em redes sociais
+
+## Sentido e Significado
+
+### Denotação
+Sentido literal, objetivo, do dicionário.
+- Exemplo: "Pedro quebrou o braço" (quebrou realmente)
+
+### Conotação
+Sentido figurado, subjetivo, depende do contexto.
+- Exemplo: "Pedro quebrou o braço da cadeira" (danificou)
+- Exemplo: "Ele tem um coração de pedra" (pessoa insensível)
+
+## Funções da Linguagem
+
+### 1. Função Referencial (Informativa)
+Foco no contexto, em informar.
+- Exemplo: "A prova será amanhã às 10h."
+
+### 2. Função Emotiva (Expressiva)
+Foco no emissor, expressar emoções.
+- Exemplo: "Que dia maravilhoso!"
+
+### 3. Função Conativa (Apelativa)
+Foco no receptor, convencer, persuadir.
+- Exemplo: "Compre agora! Última chance!"
+
+### 4. Função Fática
+Foco no canal, manter contato.
+- Exemplo: "Alô? Está me ouvindo?"
+
+### 5. Função Metalinguística
+Foco no código, explicar a própria linguagem.
+- Exemplo: "Substantivo é a palavra que nomeia seres."
+
+### 6. Função Poética
+Foco na mensagem, na forma, beleza.
+- Exemplo: Poesias, letras de música
+
+## Elementos da Comunicação
+
+- **Emissor**: quem envia a mensagem
+- **Receptor**: quem recebe a mensagem
+- **Mensagem**: conteúdo transmitido
+- **Canal**: meio de transmissão
+- **Código**: língua, gestos, símbolos
+- **Contexto**: situação da comunicação
+
+## Polissemia
+
+Uma palavra com múltiplos significados.
+- Manga: fruta / parte da roupa
+- Banco: assento / instituição financeira
+- Pena: pluma de ave / sentimento / punição
+
+## Ambiguidade
+
+Quando uma frase tem mais de uma interpretação.
+- "Vi o homem no parque com o telescópio"
+  * Estava no parque e usei telescópio para vê-lo?
+  * Ele estava no parque e tinha um telescópio?
+
+## Exercícios de Fixação
+1. Identifique se é linguagem verbal, não-verbal ou mista: emoji 😊
+2. "Aquela menina é uma flor" - Denotação ou conotação?
+3. Qual função: "Venha para a Caixa você também!"
+
+## Respostas
+1. Não-verbal
+2. Conotação
+3. Função Conativa (apelativa)`,
+                    simulado: {
+                        questoes: [
+                            {
+                                peso: 1,
+                                enunciado: 'O que é linguagem verbal?',
+                                alternativas: ['Uso de gestos', 'Uso de palavras', 'Uso de imagens', 'Uso de sons'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Qual é o sentido literal de uma palavra?',
+                                alternativas: ['Conotação', 'Denotação', 'Polissemia', 'Ambiguidade'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: '"Compre agora!" é exemplo de qual função?',
+                                alternativas: ['Emotiva', 'Referencial', 'Conativa', 'Fática'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Quem recebe a mensagem na comunicação?',
+                                alternativas: ['Emissor', 'Receptor', 'Canal', 'Código'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 1,
+                                enunciado: 'Placas de trânsito são que tipo de linguagem?',
+                                alternativas: ['Verbal', 'Não-verbal', 'Mista', 'Oral'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual frase tem conotação?',
+                                alternativas: ['O carro é azul', 'Ele tem coração de pedra', 'A mesa é de madeira', 'O livro está na estante'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: '"Alô? Está me ouvindo?" é qual função?',
+                                alternativas: ['Referencial', 'Emotiva', 'Fática', 'Poética'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'História em quadrinhos usa linguagem:',
+                                alternativas: ['Apenas verbal', 'Apenas não-verbal', 'Mista', 'Nenhuma'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'O que é polissemia?',
+                                alternativas: ['Muitos sons', 'Muitos significados', 'Muitas letras', 'Muitas frases'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 2,
+                                enunciado: 'Qual o canal em uma conversa telefônica?',
+                                alternativas: ['A voz', 'O telefone', 'A pessoa', 'A mensagem'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Identifique a função: "Que dia lindo!"',
+                                alternativas: ['Referencial', 'Emotiva', 'Conativa', 'Metalinguística'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: '"Substantivo nomeia seres" é função:',
+                                alternativas: ['Referencial', 'Metalinguística', 'Poética', 'Fática'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Ambiguidade ocorre quando:',
+                                alternativas: ['Há erro gramatical', 'Há múltiplas interpretações', 'Não há sentido', 'Há repetição'],
+                                respostaCorreta: 1
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Em poesias, qual função predomina?',
+                                alternativas: ['Referencial', 'Conativa', 'Poética', 'Fática'],
+                                respostaCorreta: 2
+                            },
+                            {
+                                peso: 3,
+                                enunciado: 'Qual NÃO é elemento da comunicação?',
+                                alternativas: ['Emissor', 'Receptor', 'Ambiguidade', 'Canal'],
+                                respostaCorreta: 2
+                            }
+                        ]
+                    }
+                },
+                // MATEMÁTICA - Operações Básicas
+                {
+                    id: 2,
                     materia: 'matematica',
                     bimestre: 1,
                     schoolYear: '9',
-                    titulo: 'FATORAÇÃO',
-                    descricao: 'Tipos de Fatoração e Exemplos',
-                    resumo: `# Fatoração
+                    titulo: 'MATEMÁTICA BÁSICA',
+                    descricao: 'Operações fundamentais com números naturais e decimais',
+                    resumo: `# Matemática
 
 ## O que é Fatoração?
 
@@ -2043,10 +2240,10 @@ Funcionam como advérbio, indicando circunstância.
             resumos: [],
             simulados: [],
             unlockedMaterias: {
-                1: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
-                2: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
-                3: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
-                4: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles']
+                1: ['portugues', 'matematica', 'geografia', 'biologia'],
+                2: ['portugues', 'matematica', 'geografia', 'biologia'],
+                3: ['portugues', 'matematica', 'geografia', 'biologia'],
+                4: ['portugues', 'matematica', 'geografia', 'biologia']
             },
             unlockedBimestres: [1, 2, 3, 4] // Todos os bimestres desbloqueados
         };
