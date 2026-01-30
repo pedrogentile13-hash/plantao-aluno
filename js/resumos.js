@@ -176,7 +176,7 @@ function openResumo(moduloId) {
 
     // Verificar se usuário tem plano gratuito
     if (currentUser.plan === 'gratis') {
-        alert('📚 Resumos Exclusivos!\n\nOs resumos completos estão disponíveis apenas para assinantes dos planos Básico e Premium.\n\n✨ Faça upgrade agora e tenha acesso ilimitado a todo o conteúdo!');
+        alert('📚 Resumos Exclusivos!\n\nOs resumos completos estão disponíveis apenas para assinantes do plano Lite (R$ 9,90/mês).\n\n✨ Faça upgrade agora e tenha acesso ilimitado a todo o conteúdo!');
         return;
     }
 
@@ -222,10 +222,7 @@ function openSimuladoFromModulo(moduloId) {
         return;
     }
 
-    if (currentUser.plan === 'basico' && simuladosThisBimestre.length >= 4) {
-        alert('Você atingiu o limite de 4 simulados por bimestre do plano básico!\nFaça upgrade para Premium para ter acesso ilimitado.');
-        return;
-    }
+    // Plano Lite tem simulados ilimitados - sem restrição
 
     openSimuladoModal(modulo);
 }
@@ -259,10 +256,7 @@ function startSimulado(simuladoId) {
         return;
     }
 
-    if (currentUser.plan === 'basico' && simuladosThisBimestre.length >= 4) {
-        alert('Você atingiu o limite de 4 simulados por bimestre do plano básico!\nFaça upgrade para Premium para ter acesso ilimitado.');
-        return;
-    }
+    // Plano Lite tem simulados ilimitados - sem restrição
 
     // Abrir modal do simulado
     openSimuladoModal(simulado);
@@ -391,8 +385,7 @@ function getMateriaName(materia) {
 function getPlanName(plan) {
     const plans = {
         'gratis': 'Grátis',
-        'basico': 'Básico',
-        'premium': 'Premium'
+        'lite': 'Lite'
     };
     return plans[plan] || 'Grátis';
 }

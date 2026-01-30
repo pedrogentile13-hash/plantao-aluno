@@ -76,9 +76,9 @@
                 </div>
 
                 <div class="feature-card-landing">
-                    <div class="feature-icon-landing purple">🎥</div>
-                    <h3>Videoaulas</h3>
-                    <p>Aulas em vídeo explicativas para reforçar seu aprendizado.</p>
+                    <div class="feature-icon-landing purple">📊</div>
+                    <h3>Acompanhamento</h3>
+                    <p>Veja seu desempenho e evolução através de relatórios detalhados.</p>
                 </div>
 
                 <div class="feature-card-landing">
@@ -102,13 +102,7 @@
             <h2 class="section-title-landing">Escolha seu <span class="highlight-purple">plano ideal</span></h2>
             <p class="section-subtitle-landing">Planos flexíveis que cabem no seu bolso. Comece grátis ou aproveite nossas ofertas especiais!</p>
 
-            <!-- Toggle Mensal/Anual -->
-            <div class="billing-toggle">
-                <button class="toggle-btn active" data-billing="monthly">Mensal</button>
-                <button class="toggle-btn" data-billing="yearly">Anual <span class="discount-badge">-30%</span></button>
-            </div>
-
-            <div class="plans-grid-landing">
+            <div class="plans-grid-landing" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 800px; margin: 0 auto;">
                 <!-- Plano Grátis -->
                 <div class="plan-card-landing">
                     <h3 class="plan-name">Grátis</h3>
@@ -118,56 +112,32 @@
                     </div>
                     <ul class="plan-features-landing">
                         <li class="feature-no">✗ Acesso aos resumos completos</li>
-                        <li class="feature-no">✗ Acesso às videoaulas</li>
                         <li class="feature-no">✗ Suporte personalizado</li>
                         <li class="feature-yes">✓ 1 simulado por bimestre</li>
+                        <li class="feature-yes">✓ Visualização de conteúdo básico</li>
                     </ul>
                     <a href="pages/login.html" class="btn-plan btn-plan-outline">Começar Grátis</a>
                 </div>
 
-                <!-- Plano Básico -->
-                <div class="plan-card-landing plan-highlight" data-monthly-price="22.90" data-monthly-old="29.90" data-yearly-price="239.90" data-yearly-old="342.80">
+                <!-- Plano Lite -->
+                <div class="plan-card-landing plan-highlight">
                     <div class="plan-badge-landing">Janeiro25</div>
-                    <h3 class="plan-name">Básico</h3>
+                    <div class="popular-tag">Recomendado</div>
+                    <h3 class="plan-name">Lite</h3>
                     <div class="plan-price-landing">
-                        <span class="price-old-landing">R$ <span class="old-price-value">29,90</span></span>
                         <div>
                             <span class="currency">R$</span>
-                            <span class="amount price-value">22,90</span>
+                            <span class="amount">9,90</span>
                         </div>
-                        <span class="period-landing"><span class="period-text">/mês</span></span>
-                        <span class="yearly-info" style="display:none; font-size: 12px; color: var(--text-secondary);">12x de R$ <span class="installment-value">19,99</span></span>
+                        <span class="period-landing">/mês</span>
                     </div>
                     <ul class="plan-features-landing">
                         <li class="feature-yes">✓ Acesso a todos os Resumos</li>
-                        <li class="feature-no">✗ Acesso às videoaulas</li>
+                        <li class="feature-yes">✓ Simulados ilimitados</li>
                         <li class="feature-yes">✓ Suporte personalizado</li>
-                        <li class="feature-yes">✓ 4 simulados por bimestre</li>
+                        <li class="feature-yes">✓ Todo conteúdo disponível</li>
                     </ul>
-                    <a href="pages/login.html" class="btn-plan btn-plan-gradient-orange">Assinar Básico</a>
-                </div>
-
-                <!-- Plano Premium -->
-                <div class="plan-card-landing plan-premium-landing" data-monthly-price="34.90" data-monthly-old="49.90" data-yearly-price="359.90" data-yearly-old="598.80">
-                    <div class="plan-badge-landing premium">Janeiro25</div>
-                    <div class="popular-tag">Mais Popular</div>
-                    <h3 class="plan-name white">Premium</h3>
-                    <div class="plan-price-landing white">
-                        <span class="price-old-landing white">R$ <span class="old-price-value">49,90</span></span>
-                        <div>
-                            <span class="currency">R$</span>
-                            <span class="amount price-value">34,90</span>
-                        </div>
-                        <span class="period-landing"><span class="period-text">/mês</span></span>
-                        <span class="yearly-info" style="display:none; font-size: 12px; color: rgba(255,255,255,0.8);">12x de R$ <span class="installment-value">29,99</span></span>
-                    </div>
-                    <ul class="plan-features-landing white">
-                        <li class="feature-yes">✓ Tudo do plano Básico</li>
-                        <li class="feature-yes">✓ Todas as videoaulas</li>
-                        <li class="feature-yes">✓ Todos os simulados</li>
-                        <li class="feature-yes">✓ Conteúdo exclusivo</li>
-                    </ul>
-                    <a href="pages/login.html" class="btn-plan btn-plan-white">Assinar Premium</a>
+                    <a href="pages/login.html" class="btn-plan btn-plan-gradient-orange">Assinar Lite</a>
                 </div>
             </div>
         </div>
