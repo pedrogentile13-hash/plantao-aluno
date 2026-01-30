@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Conteúdo - Plantão Aluno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .warning strong {
+            color: #856404;
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🔄</div>
+        <h1>Reset de Conteúdo</h1>
+
+        <div class="warning">
+            <strong>⚠️ Atenção!</strong>
+            <p>Esta ação irá limpar todo o conteúdo armazenado localmente (módulos, simulados, etc.) e recarregar com o conteúdo atualizado.</p>
+            <p><strong>Seus dados de usuário e resultados serão mantidos.</strong></p>
+        </div>
+
+        <p>Use esta ferramenta quando:</p>
+        <ul style="text-align: left; margin: 20px 0; padding-left: 40px;">
+            <li>Houver atualização de matérias</li>
+            <li>Novos módulos foram adicionados</li>
+            <li>Conteúdo não estiver aparecendo</li>
+        </ul>
+
+        <button class="btn" onclick="resetContent()">
+            🔄 Limpar e Recarregar
+        </button>
+
+        <button class="btn btn-secondary" onclick="window.history.back()">
+            ← Voltar
+        </button>
+    </div>
+
+    <script>
+        function resetContent() {
+            if (confirm('Tem certeza que deseja limpar o conteúdo?\n\nIsso irá recarregar a página com o conteúdo atualizado.')) {
+                console.log('🧹 Limpando conteúdo...');
+                localStorage.removeItem('plantaoaluno_content');
+                console.log('✅ Conteúdo limpo!');
+                alert('✅ Conteúdo limpo com sucesso!\n\nA página será recarregada.');
+                window.location.href = '../index.html';
+            }
+        }
+    </script>
+</body>
+</html>

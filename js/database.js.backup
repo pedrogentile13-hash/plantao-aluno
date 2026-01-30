@@ -1,23 +1,11 @@
 // Sistema de Database Local (LocalStorage)
 
 const DB = {
-    // Versão do conteúdo - incrementar para forçar reset
-    CONTENT_VERSION: '2.0',
-
     // Inicializar database
     init() {
         if (!localStorage.getItem('plantaoaluno_users')) {
             localStorage.setItem('plantaoaluno_users', JSON.stringify([]));
         }
-
-        // Verificar versão do conteúdo e forçar reset se necessário
-        const currentVersion = localStorage.getItem('plantaoaluno_content_version');
-        if (currentVersion !== this.CONTENT_VERSION) {
-            console.log('🔄 Nova versão detectada! Atualizando conteúdo...');
-            localStorage.removeItem('plantaoaluno_content');
-            localStorage.setItem('plantaoaluno_content_version', this.CONTENT_VERSION);
-        }
-
         if (!localStorage.getItem('plantaoaluno_content')) {
             this.initDefaultContent();
         }
@@ -2252,10 +2240,10 @@ Funcionam como advérbio, indicando circunstância.
             resumos: [],
             simulados: [],
             unlockedMaterias: {
-                1: ['portugues', 'matematica', 'geografia', 'biologia'],
-                2: ['portugues', 'matematica', 'geografia', 'biologia'],
-                3: ['portugues', 'matematica', 'geografia', 'biologia'],
-                4: ['portugues', 'matematica', 'geografia', 'biologia']
+                1: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
+                2: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
+                3: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles'],
+                4: ['matematica', 'geografia', 'historia', 'portugues', 'fisica', 'quimica', 'biologia', 'ingles']
             },
             unlockedBimestres: [1, 2, 3, 4] // Todos os bimestres desbloqueados
         };
